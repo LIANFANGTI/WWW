@@ -1,0 +1,119 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>登录</title>
+<style>
+*{
+	padding:0px;
+	margin:0px;
+	}
+
+body{
+	font-family:Arial, Helvetica, sans-serif;
+	background:url(images/grass.jpg);
+	filter:"progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod='scale')";  
+	-moz-background-size:100% 100%;  
+    background-size:100% 100%;
+    
+	}
+img{
+	border:0;
+	}
+.lg{width:468px; height:468px; margin:100px auto; background:url(images/login_bg.png) no-repeat;}
+.lg_top{ height:200px; width:468px;}
+.lg_main{width:400px; height:180px; margin:0 25px;}
+.lg_m_1{
+	width:290px;
+	height:100px;
+	padding:60px 55px 20px 55px;
+}
+.ur{
+	height:37px;
+	border:0;
+	color:#666;
+	width:236px;
+	margin:4px 28px;
+	background:url(images/user.png) no-repeat;
+	padding-left:10px;
+	font-size:16pt;
+	font-family:Arial, Helvetica, sans-serif;
+}
+.pw{
+	height:37px;
+	border:0;
+	color:#666;
+	width:236px;
+	margin:4px 28px;
+	background:url(images/password.png) no-repeat;
+	padding-left:10px;
+	font-size:16pt;
+	font-family:Arial, Helvetica, sans-serif;
+}
+.bn{width:330px; height:72px; background:url(images/enter.png) no-repeat; border:0; display:block; font-size:18px; color:#FFF; font-family:Arial, Helvetica, sans-serif; font-weight:bolder;}
+.lg_foot{
+	height:80px;
+	width:330px;
+	padding: 6px 68px 0 68px;
+}
+</style>
+</head>
+
+<body class="b">
+<div class="lg">
+<form action="index.php" method="POST" id="FORM">
+    <div class="lg_top"></div>
+    <div class="lg_main">
+        <div class="lg_m_1">
+        
+        <input name="username" onclick="cls()" class="ur" />
+        <input name="password" onclick="cls()" type="password" class="pw" />
+        <div id="error" style="color:#900; text-align:center;"></div>    
+        </div>
+    </div>
+    <div class="lg_foot">
+    <input type="button" value="Login In" class="bn"  onclick="submit1()"/></div>
+</form>
+</div>
+<div style="text-align:center;">
+
+</div>
+<script type="text/jscript">
+	function submit1(){
+
+		var ur=document.getElementsByName("username").item(0).value
+		var pw=document.getElementsByName("password").item(0).value
+		if(ur!=""&&pw!=""){
+			ajax()
+		}else if(ur==""){
+			alert("请输入用户名");	
+		}else{
+			alert("请输入密码");
+		}		
+	}
+ function ajax(){
+	 //alert(1);
+	 var user=document.getElementsByName("username").item(0).value;
+	 var pwd=document.getElementsByName("password").item(0).value;
+	 var xmlh=new XMLHttpRequest();
+	 xmlh.open("POST","log.php?user="+user+"&pwd="+pwd+"&log_type=login",true);
+	 xmlh.send(null);
+	 xmlh.onreadystatechange=function(){
+  		if (xmlh.readyState==4 && xmlh.status==200){
+    		//alert("返回值："+xmlh.responseText);
+			document.getElementById("error").innerHTML=xmlh.responseText;
+			var backstr=xmlh.responseText
+			if(backstr.indexOf("成功") > 0){ window.location.href="index.php"}
+    	}else{
+			//alert("错代："+xmlh.readyState+"\nstaus="+xmlh.status)
+		}
+  	}
+
+	 }
+	 
+function cls(){
+	document.getElementById("error").innerHTML=""	
+	}
+</script>
+</body>
+</html>

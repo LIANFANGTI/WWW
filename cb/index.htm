@@ -1,0 +1,1047 @@
+﻿<html>
+   <head>
+        <title>ComputBasic</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <style>
+          body{ font-size:48px; width:100%; margin:0px 0px;}
+          a{color:black;}
+          .d1{
+               width:100%;
+               margin:100px 2px 500px 2px;
+               background:#80d9ff;
+               padding:10px 0px 0px 30px ;
+               height:auto;
+               color:#422d4f;
+               display:none;
+          }
+          .ba{
+               width:100%;
+               
+               background:#80d9ff;
+               text-align: center;
+               font-size:100px;
+               padding:50px 0px 50px 0px;
+               	border-top-width: 2px;
+	               border-top-style:solid;
+	               border-top-color: black;
+  
+          }
+          .mul{
+               background:#fff;
+               width:100%;
+               float:left;
+               font-size:60px;
+               padding:50px 0px 50px 35px;
+               border-bottom-color:black;
+               border-bottom-width:2px;
+               border-bottom-style:solid;
+          }
+          .ziml{
+               width:60px;
+          
+          }
+          .to{
+               background:#ffeed6;
+               width:20%;
+               height:100px;
+               float:right;
+               font-size:40px;
+               text-align:center;
+               padding:20px 0px 20px 0px;
+               margin:0px 0px 0px 0px;
+               border--color:#ffe2d6;
+               border-top-width:1px;
+               border-top-style:solid;
+          }
+          #zml{display:none;}
+          #zm2{display:none;}
+          #zm3{display:none;}
+          #zm4{display:none;}
+          #zm5{display:none;}         
+          #zm6{display:none;}         
+          #zm7{display:none;}         
+          .gml1{
+               background:#ffecf2;
+               width:100%;
+               float:left;
+               font-size:70px;
+               padding:55px 30px 55px 0px;
+               text-align:center;
+          }
+          #gm1{
+            border-top-color:#000;
+            border-top-width:1px;
+            border-top-style:solid;
+          
+          
+          }
+          .tools{
+            //background:#000;
+            width:100%;
+            height:auto;
+            mmargin:0px 0px;
+            display:block;
+            //float:left;
+          }
+          .set{
+            
+            float:right;
+            padding:40px 30px 40px 30px;
+            //margin:0px 5px 0px 0px;
+            border-left-color:#000;
+            border-left-width:1px;
+            border-left-style:solid;
+           
+          }
+          #set1{
+            
+            
+            float:right;
+            padding:40px 30px 40px 80px;
+            margin:0px 0px 0px 0px;
+            border-left-color:#000;
+            border-left-width:1px;
+            border-left-style:solid;
+           
+          }
+           #sun{
+            height:58px;
+            width:58px;
+            margin:0px 30px 0px 0px;
+            
+           
+          }
+          #conset{
+            float:left;
+            width:103.5%;
+            height:100%;
+            background:white;
+            display:none;
+            margin:0px 0px 0px 0px
+            border-top-color:#ffe2d6;
+            border-top-width:1px;
+            border-top-style:solid;
+          }
+          .cs{
+            background:#fff;
+            height:213px;
+            width:213px;
+            margin:58px 58px;
+            float:left;
+            border-color:#000;
+            border-width:3px;
+            border-style:solid;
+            text-align:center;
+            font-size:160px;
+            padding:21px 0px 0px 0px;
+          
+          }
+          #title{
+                 background:white;
+                 width:103.5%;
+                 padding:10px 0px 10px 0px;
+                 text-align:center;
+                 font-size:100px;
+               border-bottom-color:black;
+               border-bottom-width:1px;
+               border-bottom-style:solid;
+               display:block;
+          
+          }
+          #clock{
+           float:left;
+           width:200px;
+           font-size:80px;
+           margin:20px 0px 0px 20px;
+           color:#707070;
+          }
+          #date{
+            font-size:20px;
+            width:100px;
+            float:left;
+            margin:30px 0px 0px 150px;
+            color:#707070;
+          }
+         .cspic{
+           width:200px;
+           height:200px;
+         
+         }
+          
+  
+         
+      
+        </style>
+      
+   </head>
+   <body onload="load()">
+
+   <script>
+     var sen1=0,t1=0
+,t2=0,t3=0,t4=0,t5=0
+     var t6=0,t7=0,t8=0
+    
+      function load(){
+             //alert(1)
+           startTime(); 
+            
+            
+      
+      
+      }
+      function input(){
+          var abc=null
+          var str=prompt("请输入新的项目名称",abc);
+          d11.style.background=str
+          var abc=str
+      }
+      
+      function display(back){
+         switch(back){
+           case 1:
+              t1=t1+1
+              if(t1%2==1){
+                  zml.style.display="block"
+              }else{
+                 zml.style.display="none"
+              }
+            break;
+            case 2:
+              t2=t2+1
+              if(t2%2==1){zm2.style.display="block"}else{zm2.style.display="none"}
+            break;
+            case 3:
+              t3=t3+1
+              if(t3%2==1){zm3.style.display="block"}else{zm3.style.display="none"}
+            break;
+             case 4:
+              t4=t4+1
+              if(t4%2==1){zm4.style.display="block"}else{zm4.style.display="none"}
+            break;
+             case 5:
+              t5=t5+1
+              if(t5%2==1){zm5.style.display="block"}else{zm5.style.display="none"}
+            break;
+            case "set":
+               sen1=sen1+1
+               if(sen1%2==1){
+                  conset.style.display="block" 
+                  getclass(".d1").display="none"
+                  getclass(".gml1").display="none"
+                  set2.innerHTML="关闭"
+                  getclass(".mul").display="none"
+                  
+               }else{
+                  conset.style.display="none"
+                  getclass(".d1").display="block"
+                  getclass(".gml1").display="block"
+                  set2.innerHTML="设置"
+                      getclass(".mul").display="block"
+               }
+            break;
+            case 6:
+              t6=t6+1
+              if(t6%2==1){zm6.style.display="block"}else{zm6.style.display="none"}
+            break;
+            case 7:
+              t7=t7+1
+              if(t7%2==1){zm7.style.display="block"}else{zm7.style.display="none"}
+            break;
+            
+}
+
+        }
+        
+        
+ 
+		</script>
+   <a name="top"></a>
+   <div id="title"><img  id="logo" src="./img/logo .jpg"/></div>
+   <div class="tools">
+      <div id="clock">1234</div>
+      <div id="date">2015年<br>4月31日<br>星期四</div>
+      <div  id="set1" onclick="night()"><img id="sun"src="./img/sun.jpg"></div>
+      <div class="set" id="set2" onclick="display('set')">设置</div>
+   </div>
+   
+   <div id="conset">
+      <div class="cs" onclick="">
+        <img  class="cspic" src="./img/color_set.jpg">
+      </div>
+      <div class="cs" id="yej" onclick="night()"><img class="cspic" src="./img/moon.jpg"></div>
+      <div class="cs">关</div>
+      <div class="cs">关</div>
+      <div class="cs">关</div>
+      <div class="cs">关</div>
+      <div class="cs">关</div>
+   </div>
+   
+   
+   
+   <div class="gml1"  id="gm1" onclick="display(1)">第一单元</div>
+      <div id="zml">
+          <a href="#jsjfz" class="mul">计算机发展史</a>
+          <a href="#jsjtdjxn" class="mul">计算机特点及性能指标</a>
+          <a href="#wclq" class="mul">微处理器发展</a>
+          <a href="#yyly" class="mul">应用领域</a>
+          <a href="#jsjfl" class="mul">计算机分类</a>
+          <a href="#jsjzc" class="mul">计算机组成</a>
+          <a href="#fnymyl"  class="mul">冯诺依曼</a>
+          <a href="#wjgzgc" class="mul">微机工作过程</a>
+          <a href="#cpuzc"  class="mul">CPU</a>
+          <a href="#jsjccxt" class="mul">计算机存储系统</a>
+          <a href="#xssb" class="mul">显示设备</a>
+          <a href="#zx" class="mul">总线</a>
+          <a href="#jsjnbbm" class="mul">计算机内部编码</a>
+          <a href="#jsjaq" class="mul">计算机安全</a>
+</div>
+     <div class="gml1" id="gm2" onclick="display(2)" >第二单元</div>
+       <div id="zm2">
+         <div class="mul">
+            <a href="#" class="ziml" id="twone">2.1</a>
+            <div class="to" onclick="input()">编辑</div></a>
+            <div class="to">删除</div>
+          </div>
+         <div class="mul">
+            <a href="#" class="zmul">2.2</a>
+            <div class="to">编辑</div>
+            <div class="to">删除</div>  
+         </div> 
+       </div>
+            <div class="gml1" id="gm3" onclick="display(3)">第三单元</div>
+               <div id="zm3">
+                  <a href="#" class="mul">2.1</a>
+                  <a href="#" class="mul">2.2</a>
+               </div>
+           <div class="gml1" id="gm4" onclick="display(4)">第四单元</div>
+               <div id="zm4">
+                  <a href="#" class="mul">2.1</a>
+                  <a href="#" class="mul">2.2</a>
+               </div>
+            <div class="gml1" id="gm5" onclick="display(5)">第五单元</div>
+               <div id="zm5">
+                  <a href="#" class="mul">2.1</a>
+                  <a href="#" class="mul">2.2</a>
+               </div>
+            <div class="gml1"onclick="display(6)">第六单元</div>
+               <div id="zm6">
+                  <a href="#" class="mul">6.1</a>
+                  <a href="#" class="mul">6.2</a>
+               </div>
+       
+            <div class="gml1"onclick="display(7)">检测练习</div>
+               <div id="zm7">
+                  <div id="test1" class="mul" onClick="kaishi()">开始测验</div>
+                  <a href="#" class="mul">功能开发中</a>
+               </div>
+   <br><br>
+   
+   <?php
+      echo "<h1>test</h1>"
+   ?>
+  <div class="d1">
+   	<h3>第一代电子计算机采用的电子元件</h3>
+    <input type="button">提交
+	<label><input type="radio" name="one" value="A" >A、真空管<br> </label>
+	<label><input type="radio" name="one" value="B" >A、刚管<br> </label>   
+  </div> 
+   
+   <div class="d1" id="d11">
+   <h1><a name="jsjfz">计算机发展史</a></h1>
+世界上第一台数字电子计算机诞生于1946年2月，宾夕法尼亚大学 物理学家 莫克利 工程师埃克特 共同开发的“电子数值积分器”（Electronic Numerical Intgrator And Computer，简称ENIAC）,中文译名“埃尼阿克”<br/>
+<br>
+
+<hr/>
+
+<b>第一代</b>电子管 （1946－1957年）每秒运算几千次到几万次 采用机器语言和汇编语言 主要用于科学计算<br/>
+<br>
+
+第二代 晶体管（1957－1964年）每秒运算几十万次 出现了FORTRAN COBOL ALGOL等高级语言 主要用于数据处理、事务处理、工业控制等方面<br/>
+<br>
+
+第三代 中小规模集成电路（1964－1970年） 运算速度达每秒几十万次到几百万次 高级程序语言得到了很大的发展，朝标准化，多样化，通用化，机型化系统发展。 广泛应用于各个领域 <br/>
+<br>
+
+第四代 超大规模集成电路（1971－今） 运行速度每秒上千万次到十万亿次，同时朝巨型化，微型化，网络化，智能化，多媒体方向发展。<br><br>
+<a href="#top"><div class="ba">Back↩</div></a>
+
+</div>
+<div class="d1" id="d12">
+<h1><a name="wclq">微处理器发展</a></h1>
+Intel（英特尔）公司成立于1968年 于1971年推出第一台微处理器4004
+</br><br>
+8位 8008
+<br>
+16位 8086 8088 80286 
+</br>
+32位 80386 80486 奔腾 高能奔腾 多能奔腾
+</br>
+64位……
+</br>
+ 除英特尔公司外 还有AMD公司生产CPU
+我国研制CPU:龙芯、方舟、威盛、星光
+</br>
+
+1981年8月12日IBM公司推出第一台个人计算机5150 采用的是Microsoft公司提供的MS－DOS操作系统
+<a href="#top"><div class="ba">Back↩</div></a>
+
+</div>
+
+<div class="d1" id="d13">
+
+<ul>
+<h1><a name="jsjtdjxn">计算机特点及性能指标</a></h1>
+<h2>计算机特点</h2>
+<li>1.高速精确的运算能力
+</li>
+<li>2.准确的逻辑判断能力
+</li> 
+<li> 3.强大的存储能力
+</li> 
+<li> 4.自动运行功能
+</li> 
+<li>5.网络与通信功能
+</li> 
+</ul></h2>
+
+
+<h2>计算机性能指标
+</h2>
+1.字长 （bit）
+<br>
+2.主频（MHz）决定计算机运行速度
+<br>
+3.运行速度（MIPS每秒百万条指令）
+<br>
+3.存储容量（Byte）
+<br>
+4.存储周期（ns,纳秒）
+<br>
+<a href="#top"><div class="ba">Back↩</div></a>
+
+</div>
+<div class="d1" id="d14">
+<h1><a name="yyly">
+计算机应用领域
+</a></h1>
+1.科学计算
+<br>
+2.数据处理
+<br>
+3.过程控制
+<br>
+4.计算机辅助系统
+（CBE教育     CAD设计    CAM制造     CAI教学 
+    CAT测试   CMI管理）
+<br>
+5.人工智能
+<br>
+6.多媒体应用
+<br>
+<a href="#top"><div class="ba">Back↩</div></a>
+
+</div>
+
+
+<div class="d1" id="d15">
+<h1><a name="jsjfl">计算机分类</a> </h1>
+按综合性能指标 巨、大、中、小、微 五类
+<br>
+按信息处理方式 数字计算机 模拟计算机 混合计算机
+<br>
+按用途 通用计算机 专用计算机
+<br>
+按字长4.8.16.32.64位
+<br>
+<a href="#top"><div class="ba">Back↩</div></a>
+
+
+</div>
+
+<div class="d1" id="d16">
+<h1><a name="jsjzc">计算机组成</a></h1>
+一个完整计算机系统是由硬件系统和软件系统两部分组成
+<br><br>
+
+计算机硬件由 <br><a href="#kzq">控制器</a><br><a href="#ysq"><u>运算器</u></a><br>存储器<br>输入输出设备<br> 五部分组成 
+<br><br>
+
+软件系统包括系统软件和应用软件  
+<br><br>
+   系统软件包括<br>操作系统<br>程序设计语言<br>系统检测诊断程序<br>编译系统<br>通用数据库管理系统等
+<br><br>
+   应用软件是系统软件的支持下工作的，决定了计算机发挥的作用，因而应用软件正朝 标准化、模块化方向发展，提高应用软件的兼容性与可扩充性。
+<br>
+<a href="#top"><div class="ba">Back↩</div></a>
+
+</div>
+
+
+
+<div class="d1" id="d17">
+<h1><a name="fnymyl">冯诺依曼原理</a></h1>
+美籍匈牙利科学家冯?诺依曼被称为“现代电子计算机之父”提出程序存储和程序控制的计算机体系设计思想内容如下
+<br>
+（1）计算机硬件由运算器、控制器、存储器、输入设备和输出设备五部分组成
+<br>
+（2）计算机内部采二进制
+<br>
+（3）程序存储和程序控制
+<br>
+<a href="#top"><div class="ba">Back↩</div></a>
+
+</div>
+<div class="d1" id="d18">
+<h1><a name="wjgzgc">微机工作过程
+</a></h1>
+1.CPU访问输入输出端
+<br>
+2.读取数据并运行
+<br>
+3.暂存结果
+<br>
+4.输出结果
+<br>
+<a href="#top"><div class="ba">Back↩</div></a>
+
+</div>
+<div class="d1" id="d19">
+<h1><a name="cpuzc">CPU组成</a></h1>
+<h2><a name="ysq">运算器</a></h2>
+<br>
+运算器是负责对数据进行算术运算和逻辑运算的部件
+<br>
+运算器由 
+<br>
+    AlU<br>累加器<br>状态寄存器<br>通用寄存器等组成
+<br>
+
+运算器功能
+<br>
+1.实现对数据的算术和逻辑运算
+<br>
+2.暂时存放参与运算的数据和中间运算结果
+<br>
+3.挑选参加运算的数据，选中被执行的运算功能，并把运算结果输到所求的部件中
+<br>
+
+<h2><a name="kzq">控制器</a></h2>
+<br>
+其工作是取指令、解释指令、以及完成指令
+<br>
+控制器是由
+<br>
+指令指针寄存器（用于产生及存放下条待取指令的地址）、<br>
+指令寄存器（存放正在执行的指令）、
+<br>
+控制逻辑电路（产生执行微操做时所需要的控制信号）、
+<br>
+和时钟控制电路（产生执行过程中所需要的时间控制信号）等组成
+<br>
+
+
+<h2><a name="jcq">寄存器</a>
+</h2><br>
+是CPU内部临时存储单元，用于存储运行中的数据、中间结果、地址和状态信息
+<br>
+由
+<br>
+数据寄存器、存放地址寄存器、存放控制信息寄存器、存放状态信息寄存器和其他寄存器
+<br>
+<a href="#top"><div class="ba">Back↩</div></a>
+
+</div>
+<div class="d1" id="d1a">
+<h1><a name="jsjccxt">计算机存储系统</a></h1>
+<h2>存储器分类
+</h2>
+按多层次存储概念计算机存储系统由
+<br>
+Cache 、ROM、RAM、 软盘存储器、硬盘存储器、光盘存储器、优盘存储器等组成
+<br>
+
+<b>按存储介质分为
+</b><br>
+半导体存储器、磁表面存储器、光存储器
+<br>
+
+<b>按工作方式分为 
+</b><br>
+随机读写存储器、只读存储器、顺序读写存储器
+<br>
+
+<b>按计算机系统结构可分为
+</b><br>
+内存储器、外存储器
+<br>
+
+<hr/>
+内存储器又称主存，内存储器由
+<br>
+RAM ROM Cache 组成
+<br><br>
+
+CPU可直接访问内存储器
+<br><br>
+
+
+容量=末地址－首地址＋1
+<br>
+
+内存容量指RAM容量
+<br>
+
+<h2>RAM</h2>
+RAM是内存储器的主要构成部分
+<br>
+RAM用于存储运行中的程序和数据
+<br>
+
+静态随机存储器SRAM 一般用于比内存小得多的Cache等场合
+<br>
+
+动态随机存储器DRAM 特点是在器件有加电源的情况下其存储单元中的内容也不能保存较长时间
+<br>
+
+<b>DRAM包括
+</b><br>
+地址寄存器、存储单元、数据寄存器
+<br>
+<b>DRAM的主要参数：</b>存储容量、工作频率
+<br>
+
+高速缓冲存储器Cache 解决CPU工作比RAM读写速度快造成CPU工作速度下降问题
+<br>
+
+
+<h2>ROM
+</h2>
+特点：数据不易丢失
+<br>
+用途：存储计算机中固定的程序和数据
+<br>
+
+<b>PROM</b>可编程只读存储器
+<br>
+<b>EPROM</b>可擦除式可编程只读存储器
+<br>
+<b>EEOROM</b>电式可擦除式可编程只读存储器
+<br>
+<b>Flah Memory</b>闪速存储器
+<br>
+<a href="#top"><div class="ba">Back↩</div></a>
+
+</div>
+<div class="d1" id="d1b">
+<a name="xssb">
+<h1>显示设备</h1></a>
+<h2>显示器性能指标</h2>
+1.像素
+<br>
+2.分辨率
+<br>
+3.屏幕尺寸
+<br>
+4.点间距
+<br>
+5.灰度极
+<br>
+6.对比度
+<br>
+7.扫描方式
+<br>
+8.刷新率
+<br>
+9.响应时间
+<br>
+
+<h2>投影仪分类</h2>
+CRT（阴极射线管）
+<br>
+LCD（液晶投影机）
+<br>
+DLP（数字光处理）
+<br>
+DLV（数字光阀）
+<br>
+<a href="#top"><div class="ba">Back↩</div></a>
+
+</div>
+<div class="d1" id="d1c">
+<h1><a name="zx">总线</a></h1>
+
+<b>按功能分为
+</b><br>
+内部总线、系统总线、外部总线
+<br><br>
+
+系统总线是连接CPU和计算机内部其它高速功能部件的总线
+<br><br>
+
+<b>系统总线分
+</b><br>
+数据总线（双向）
+<br>
+地址总线（单向）
+<br>
+控制总线（每一根单向）
+<br><br>
+
+
+<b>外部总线</b>（通信总线）是微机系统之间或微机系统与其它系统之间传输的通路
+<br>
+如 EIA－RS－232串行总线、USB总线等将属于外部总线
+<br><br>
+
+<b>按时序控制方式分类
+</b><br>
+同步总线
+<br>
+异步总线
+<br><br>
+
+<b>系统总线有
+</b><br>
+ISA总线
+<br>
+AGP总线
+<br>
+PCI局部总线
+<br><br>
+
+串行总线RS232C
+<br>
+并行总线IEEE-488
+<br>
+通用串行总线USB
+<br>
+
+
+<hr/>
+
+<b>ISA</b>（工业标准体系结构）简称标准总线，是IBM公司1984年推出为PC/AT机建立的系统总线标准 也叫AT总线 线宽16位，后发展到
+<br><br>
+<b>EISA</b>（拓展工业标准结构）线宽32位
+<br><br>
+
+<b>PCI </b>（外围设备互连总线）由Intel公司推出一种标准局部总线，采用32位高性能总线结构，可扩展到64位，于ISA总线兼容
+<br><br>
+<b>PCI-E</b>（全称PCI-Express）位目前最新的总线和标准接口，将全面取代现代的PCI和AGP（已淘汰图形系统接口。
+<br>
+
+<a href="#top"><div class="ba">Back↩</div></a>
+
+</div>
+
+
+<div class="d1" id="d1d">
+<h1><a name="jsjnbbm">计算机内部编码</a></h1>
+<b>原码：</b>计算机中正数符号位用0表示，负数的符号位用1表示，这种方法表示的数成为原码
+<br><br>
+
+<b>反码：</b>相对补码而言的，一个数的反码和补码的关系有两种，即正数的反码和负数的反码
+<br><br>
+
+<b>补码：</b>补码也是相对原码而言的，一个数的补码和原码的关系有两种，即正数的补码于负数的补码
+<br><br>
+
+<b>西文字符:</b>西文字符是由拉丁字母、数字、标点符号以及一些特殊符号组成，他们统称为"字符"所有字符的集合叫字符集
+<br><br>
+
+<b>ASCLL：</b>（American Standard Codefor Information Interchange)美国信息交换标准代码 包含128个常用字符，10个数字，26个小写字母，26个大写字母，33个标点符号，33个控制码
+<br><br>
+
+<hr/>
+<h2>汉字编码</h2>
+汉字输入码根据其编码规则，依次分为流水码、音码 、形码 、音形结合码
+<br><br>
+
+<b>汉子内码：</b>计算机内部对汉字进行存储、处理和传输而编制的代码
+<br><br>
+
+<b>国标码：</b>国标码又称汉字信息交换码，是用于汉字信息处理系统之间或者与通信系统之间进行信息交换的代码，GB2312-80（《信息交换汉字编码字符集-基本集》) ：即国标码标准，采用两个字节表示一个汉字，共收集7445个图形字符，其中一般字符、数字、拉丁字符、希腊字符、汉字拼音等709个，汉字字符分为两级， 一级汉字3755个 二级汉字3008个，（按偏旁部首排列）
+<br><br>
+
+<b>区位码：</b>为避开ASCII表中的控制码，将8-80国标码字符集中所有汉字编码分为94区94位，用汉字所在的区号和位号来表示汉字的编码就是区位码。（十进制）
+<br><br>
+
+<b>机内码：</b>为了与ASCII兼容，汉字用两个字节来存储，在计算机内部为了能够区分是汉字还是ASCII码，将国标码每个字节的最高位由0变为1，交换后的国标码称为机内码。
+<br><br>
+
+机内码=国标码+8080H
+<br>
+国标码=区位码+2020H
+<br>
+机内码=区位码+A0A0H
+<br><br>
+
+<b>USC</b>(Universal Could Character Set):通用字符集规定全世界现代书面语言文字所使用所有字符的标准代码
+<br><br>
+
+<b>BIG5：</b>目前我国台湾和香港地区使用的汉字字符集，共有汉字<b color="red">13053</b>个
+<br><br>
+
+<b>GBK：</b>字符集共有20902个汉字字符
+<br><br>
+
+<b>BCD码：</b>用四位二进制数来表示一个十进制数，规则：选用0000-1001来表示0-9的十位字符。
+<br><br>
+
+<b>汉字地址码：</b>用来指出汉字字模信息在汉字库中 存放的逻辑地址的编码
+<br><br>
+
+<b>奇偶检验码：</b>在实际使用中，奇偶校验可分为 垂直奇偶校验  水平奇偶校验 水平垂直奇偶校验码等
+<br><br>
+<a href="#top"><div class="ba">↩</div></a>
+
+</div>
+<div class="d1" id="d1e">
+<h1><a name="jsjaq">计算机安全</a></h1>
+计算机所面临的安全威胁： 物理安全 系统安全 黑客攻击  病毒威胁
+<br><br>
+
+<b>计算机病毒：</b>是指编制或者在计算机程序中插入的破坏计算机功能或破坏数据，影响计算机使用，并且能够自我复制的一组计算机指令或者程序代码
+<br><br>
+
+<b>病毒的特点：</b>传染性 隐蔽性 破坏性 寄生性 非法性 
+<br><br>
+
+<b>病毒分类：
+</b>
+
+按破坏性分： 干扰性病毒、破坏性病毒 
+<br><br>
+
+按传染途径分：引导区型病毒、文件型病毒、混合型病毒、宏病毒、网络病毒
+<br><br>
+
+文件型病毒：感染拓展名为：COM EXE DRV BIN OVL SYS 等可执行文件如CIH(破坏BIOS)就是文件型病毒
+<br><br>
+
+混合型病毒：是引导区型病毒和文件型病毒的巧妙结合 
+<br><br>
+
+宏病毒：只感染Word文档
+<br><br>
+<a href="#top"><div class="ba">Back↩</div></a>
+</div>
+
+
+<div class="d1" id="lianx">
+	
+
+
+</div>
+
+
+<script type="text/javascript">
+$(function() {
+	$( "#Button1" ).button(); 
+});
+</script>
+</body>
+<script>
+function getclass(sname) { 
+   for (var i=0;i<document.styleSheets.length;i++) { 
+      var rules; 
+      if (document.styleSheets[i].cssRules) { 
+      rules = document.styleSheets[i].cssRules;              } else { 
+      rules = document.styleSheets[i].rules; 
+} 
+   for (var j=0;j<rules.length;j++) { 
+      if (rules[j].selectorText == sname) { 
+//selectorText 属性的作用是对一个选择的地址进行替换.意思应该是获取RULES[J]
+      return rules[j].style; 
+      } 
+} 
+} 
+}
+var nightn=0
+function night(){
+   nightn=nightn+1
+   if(nightn%2==1){
+         var qcolor="#bedfe9"
+        var dbcolor="black"
+        var bcolor="#292b5d"
+        var gmlcolor="black"
+        var bordcolor="white"
+        var mulbcolor="#505050"
+        set1.innerHTML="<img id='sun'src='./img/moon.jpg'>"
+        yej.innerHTML="日"
+      //  sun.src="./img/sun.jpg"
+        logo.src="./img/logo_n.jpg"
+        
+        
+        title.style.background="black"
+   }else{
+        var qcolor="#422d4f"
+        var dbcolor="white"
+        var bcolor="#80d9ff"
+        var gmlcolor="#ffecf2"
+        var bordcolor="black"
+        var mulbcolor="#fff"
+        yej.innerHTML="夜"
+        set1.innerHTML="<img id='sun'src='./img/sun.jpg'>"
+        //sun.src="./img/sun.jpg"
+       logo.src="./img/logo .jpg"
+        title.style.background="white"
+   
+   }
+  
+  
+        
+        document.body.style.          backgroundColor=dbcolor
+        document.body.style.Color=qcolor
+        getclass(".d1").background = bcolor 
+        getclass(".d1").color = qcolor 
+        
+        getclass(".gml1").color = qcolor 
+        getclass(".gml1").background=gmlcolor 
+        
+        getclass(".mul").background=mulbcolor
+        getclass(".mul").color = qcolor 
+        getclass(".mul").borderColor = bordcolor
+        
+        getclass(".cs").background=mulbcolor
+        getclass(".cs").color = qcolor 
+        getclass(".cs").borderColor = bordcolor  
+        
+       conset.style.color = qcolor 
+       conset.style.background=mulbcolor 
+       gm1.style.borderColor=bordcolor  
+       title.style.borderColor=bordcolor
+       set1.style.borderColor=bordcolor
+      
+      
+      
+             
+        getclass(".ba").borderColor = bordcolor        
+        getclass(".ba").background=bcolor
+        getclass(".ba").color = qcolor 
+        
+        getclass(".set").color = qcolor 
+        getclass(".set").borderColor = bordcolor 
+        
+      
+      }
+</script>
+
+<script type="text/javascript">
+function startTime(){
+     var today=new Date()
+     var h=today.getHours()
+     var m=today.getMinutes()
+     var s=today.getSeconds()
+     var day=today.getDate()
+     var mon=today.getMonth()
+     var ye=today.getFullYear()
+     var week=today.getDay()
+clock.innerHTML=ct(h)+":"+ct(m)+":"+ct(s)
+date.innerHTML=ye+"年<br>"+mon+"月"+day+"日<br>"+weekc(week)
+
+t=setTimeout('startTime()',500)
+
+}
+
+
+function ct(i)
+{
+if (i<10) 
+  {i="0" + i}
+  return i
+}
+
+	  function weekc(a){
+		  switch(a){
+         
+			  case 1:
+			  a="星期一"
+			  return a
+			   case 2:
+			  a="星期二"
+			  return a
+			   case 3:
+			  a="星期三"
+			  return a
+			   case 4:
+			  a="星期四"
+			  return a
+			   case 5:
+			  a="星期五"
+			  return a
+			   case 6:
+			  a="星期六"
+			  return a
+			   case 0:
+			  a="星期日"
+			  return a
+			  }
+		  
+		  } 
+</script>
+<script>
+	function selelct(){
+		this.style.color="red"
+		
+		}
+    function kaishi(){
+		lianx.style.display="block"
+		lianxi()
+		
+		}
+		var tihao=[]
+	function lianxi(){
+		//alert("lianxi函数启动")
+		var timu="ENIAC采用___作为主要电子元件"	
+		var optiona="晶体管"
+		var optionb="真空管"
+		var optionc="集成电路"
+		var optiond="电子管"
+		var trueda="A"
+
+		lianx.innerHTML="<h3>选择题</h3>"
+		
+	for(var i=1;i<=10;i++){
+		var radioa="<br><label><input type='radio'   name='c1' value='A'  class='radio'>A、"+ optiona+"</label>"
+		var radiob="<br><label><input type='radio'   name='c1' value='B'  class='radio'>B、"+ optionb+"</label>"
+		var radioc="<br><label><input type='radio'   name='c1' value='C'  class='radio'>C、"+ optionc+"</label>"
+		var radiod="<br><label><input type='radio'   name='c1' value='D'  class='radio'>D、"+ optiond+"</label>"
+		tihao[i]="第"+i+"题"
+		//name=c"+i+"
+		lianx.innerHTML=lianx.innerHTML + i +"、"+timu+ radioa+radiob+radioc+radiod+"<hr color='white'>"
+	 //<input type="radio" name="one" value="A" >A傻逼
+     //<input type="radio" name="one" value="B">B不傻逼
+	}
+    lianx.innerHTML=lianx.innerHTML+"<div class='ba' onclick='yanzheng()'>提交</div>"
+	}
+	function yanzheng(){
+		var ra=document.getelmentbyname("c1")
+		alert(ra.length)
+		for(i=1;i<tihao.length;i++){
+			
+		  }
+		}
+</script>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

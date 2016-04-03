@@ -1,0 +1,44 @@
+var PageConfig={UserPermissions:{"A45":{"name":"收入统计"},"A12":{"name":"客户管理"},"A14":{"name":"客户退卡"},"A33":{"name":"门店信息"},"A041":{"name":"销售退货单删除"},"A013":{"name":"单据结算"},"A072":{"name":"采购退货单结算"},"A201":{"name":"商品销售报表"},"A093":{"name":"查看成本价"},"A221":{"name":"销售收款明细"},"A081":{"name":"采购退货单删除"},"A34":{"name":"客户类型管理"},"A391":{"name":"转仓单审核"},"A092":{"name":"查看采购价"},"A36":{"name":"结算方式管理"},"A04":{"name":"销售退货单管理"},"A011":{"name":"单品优惠"},"A18":{"name":"库存预警"},"A202":{"name":"项目销售报表"},"A19":{"name":"报销单"},"A052":{"name":"采购单结算"},"A031":{"name":"销售退货审核"},"A07":{"name":"采购退货开单"},"A20":{"name":"销售报表"},"A39":{"name":"转仓开单"},"A29":{"name":"资料导入"},"A10":{"name":"盘点开单"},"A32":{"name":"员工管理"},"A26":{"name":"会员卡退卡记录"},"A41":{"name":"收支管理"},"A30":{"name":"账号管理"},"A17":{"name":"客户提醒"},"A27":{"name":"项目管理"},"A40":{"name":"转仓单管理"},"A15":{"name":"会员卡管理"},"A06":{"name":"采购单管理"},"A111":{"name":"盘点单删除"},"A03":{"name":"销售退货开单"},"A16":{"name":"套餐管理"},"A01":{"name":"开单"},"A05":{"name":"采购开单"},"A012":{"name":"单据完工"},"A061":{"name":"采购单删除"},"A24":{"name":"会员卡充值记录"},"A071":{"name":"采购退货审核出库"},"A38":{"name":"库存分布"},"A44":{"name":"营业额统计"},"A291":{"name":"资料导出"},"A02":{"name":"单据管理"},"A091":{"name":"商品分类管理"},"A222":{"name":"采购付款明细"},"A21":{"name":"商品采购明细表"},"A11":{"name":"盘点单管理"},"A25":{"name":"会员卡消费记录"},"A08":{"name":"采购退货单管理"},"A09":{"name":"商品管理"},"A151":{"name":"会员卡删除"},"A032":{"name":"销售退货结算"},"A13":{"name":"客户办卡"},"A42":{"name":"工具管理"},"A28":{"name":"供应商管理"},"A101":{"name":"盘点单审核"},"A37":{"name":"仓库管理"},"A022":{"name":"单据删除"},"A35":{"name":"业务类型管理"},"A051":{"name":"采购审核入库"},"A22":{"name":"资金报表"},"A23":{"name":"销售单汇总表"},"A43":{"name":"VIN查询"},"A021":{"name":"单据反结算"},"A46":{"name":"会员卡统计"}}};
+PageConfig.check=function(){
+    var args=Array.prototype.slice.call(arguments);
+    var permissions=args.length>=1?args[0]:false;
+    var config=this,userPermissions=config.UserPermissions;
+    var permissionsArr=(permissions||"").split(",");
+    var permission,isAllow=false;
+    for(var i=permissionsArr.length-1;i>=0;i--){
+        permission=permissionsArr[i];
+        isAllow=userPermissions.hasOwnProperty(permission);
+        if(isAllow){break;}
+    }
+    return isAllow;
+};
+$(function(){
+    var config=PageConfig;
+    $("[data-permission-list]").each(function(){
+        var $this=$(this);
+        var permissions=$this.attr("data-permission-list");
+        var style=$this.attr("data-permission-style");
+        var isAllow=config.check(permissions);
+        if(!isAllow){
+            switch(style){
+                case "hide":$this.hide();break;
+                case "disabled":$this.prop("disabled",true);break;
+                case "css":$this.addClass($this.attr("data-permission-css"));break;
+            }
+        }
+    });
+});
+if(Handlebars && Handlebars.registerHelper){
+    Handlebars.registerHelper("rights", function () {
+        var args=Array.prototype.slice.call(arguments);
+        var rights=args.length>1?args[0]:false
+            options=args[args.length-1];
+        var config=PageConfig;
+        var isAllow=config.check(rights);
+        if (isAllow) {
+            return options.fn(this);
+        } else {
+            return options.inverse(this);
+        }
+    });
+}

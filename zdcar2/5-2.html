@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title>会员卡管理</title>
+		<link rel="stylesheet" href="css/index.css" type="text/css" />
+	</head>
+
+	<body>
+
+		<div id="main">
+			<hr />
+			<table width="100%" border="0" cellspacing="0" cellpadding="0">
+				<tr>
+					<td width="8%" height="27">
+						<div id=win style="display:none; POSITION:absolute; left:50%; top:50%; width:800px; height:500px; margin-left:-300px; margin-top:-200px; border:1px solid #888; background-color:#edf; text-align:right"><a href="javascript:closeLogin();">退出</a></div>
+						<p>
+							<script>
+								function openLogin() {
+									document.getElementById("win").style.display = "";
+								}
+
+								function closeLogin() {
+									document.getElementById("win").style.display = "none";
+								}
+							</script>
+							<script>
+								function openLogin() {
+									document.getElementById("win").style.display = "";
+								}
+
+								function closeLogin() {
+									document.getElementById("win").style.display = "none";
+								}
+							</script>会员卡统计</p>
+						<hr color="#009933">
+					</td>
+				</tr>
+			</table>
+			<h4>&nbsp;</h4>
+			<hr />
+			<h4>&nbsp;</h4>
+			<table width="100%" border="0" cellspacing="0" cellpadding="0">
+				<tr>
+					<td height="51" colspan="3" align="center">
+						<input type="submit" name="button" id="button" value="今日" class="botton">
+						<input type="submit" name="button2" id="button2" value="本月" class="botton">
+						<input type="date" height=25/> 到
+						<input type="date" height=25/>
+						<input type="submit" name="button3" id="button3" value="查询" class="botton">
+					</td>
+				</tr>
+				<tr>
+					<td width="32%" align="right">
+						<table bordercolor="#CC9900" width="63%" border="1" cellspacing="0" cellpadding="0">
+							<tr>
+								<td height="121" align="center">
+									<p><font color="#CC9900">办卡/续费</font></p>
+									<p><font color="#CC9900">0</font></p>
+									<hr color="#CC9900">
+									<p>&nbsp;</p>
+									<p><font color="#CC9900" size="-1">赠送金额：0</font></p>
+								</td>
+							</tr>
+						</table>
+					</td>
+					<td width="33%" align="center">
+						<table bordercolor="#00CC66" width="60%" border="1" cellspacing="0" cellpadding="0">
+							<tr>
+								<td height="123" align="center">
+									<p><font color="#00CC66">储值消费</font></p>
+									<p><font color="#00CC66">0</font></p>
+									<hr color="#00CC66">
+									<p>&nbsp;</p>
+									<p><font color="#00CC66" size="-1">储值卡金额：0</font></p>
+								</td>
+							</tr>
+						</table>
+					</td>
+					<td width="35%" align="left">
+						<table bordercolor="#0066FF" width="54%" border="1" cellspacing="0" cellpadding="0">
+							<tr>
+								<td height="124" align="center">
+									<p><font color="#0066FF">计次卡消费</font></p>
+									<p><font color="#0066FF">0</font></p>
+									<hr color="#0066FF">
+									<p>&nbsp;</p>
+									<p><font color="#0066FF"><font color="#0066FF" size="-1">计次卡</font>金额：0</font>
+									</p>
+								</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+				<tr>
+					<td height="150" colspan="3" align="center">
+						<table bordercolor="#DEDEDE" width="80%" border="1" cellspacing="0" cellpadding="0">
+							<tr>
+								<td height="35" colspan="3">
+									<p>会员卡收入统计</p>
+								</td>
+							</tr>
+							<tr>
+								<td height="34" align="center" onmouseover="this.style.backgroundColor='#CCCCCC'" onmouseout="this.style.backgroundColor=''">类型</td>
+								<td onmouseout="this.style.backgroundColor=''" onmouseover="this.style.backgroundColor='#CCCCCC'" align="center">金额</td>
+								<td align="center" onmouseout="this.style.backgroundColor=''" onmouseover="this.style.backgroundColor='#CCCCCC'">所占比例</td>
+							</tr>
+							<tr onmouseout="this.style.backgroundColor=''" onmouseover="this.style.backgroundColor='#2AAF59'">
+								<td height="33" align="center">储值/办卡</td>
+								<td align="center">0.00</td>
+								<td align="center">0.00%</td>
+							</tr>
+							<tr onmouseout="this.style.backgroundColor=''" onmouseover="this.style.backgroundColor='#2AAF59'">
+								<td height="29" align="center">计次/办卡</td>
+								<td align="center">0.00</td>
+								<td align="center">0.00%</td>
+							</tr>
+							<tr onmouseout="this.style.backgroundColor=''" onmouseover="this.style.backgroundColor='#2AAF59'">
+								<td height="32" align="center">储值/续费</td>
+								<td align="center">0.00</td>
+								<td align="center">0.00%</td>
+							</tr>
+							<tr onmouseout="this.style.backgroundColor=''" onmouseover="this.style.backgroundColor='#2AAF59'">
+								<td height="35" align="center">计次/续费</td>
+								<td align="center">0.00</td>
+								<td align="center">0.00%</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+			</table>
+			<br />
+			<br />
+			<br />
+			<div id="table2"></div>
+
+		</div>
+
+	</body>
+
+</html>

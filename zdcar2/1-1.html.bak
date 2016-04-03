@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title>一库汽车管理系统</title>
+		<link rel="stylesheet" href="css/index.css" type="text/css" />
+	</head>
+
+	<body>
+
+		<div id="main">
+			<table>
+				<tr>
+					<th>
+						<input type="search" value="输入名字创建" />
+						<input type="button" value="创建客户" />
+					</th>
+				</tr>
+				<tr>
+					<td>
+						<input type="search" value="输入名字搜索" />
+						<input type="button" value="搜索客户" />
+					</td>
+				</tr>
+			</table>
+			<hr />
+			<br />
+			<table>
+				<tr>
+					<th>
+						<p>项目编码：
+							<input type="text" /> 项目名称：
+							<input type="text" /> </p>
+					</th>
+				</tr>
+				<tr>
+					<td>项目类型：
+						<select>
+							<option>洗车</option>
+							<option>美容</option>
+							<option>维修</option>
+
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;工时：
+						<input type="text" /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;单价：
+						<input type="text" /> </p>
+					</td>
+				</tr>
+				<tr>
+					<td>故障类型 :&nbsp;
+						<input type="text" />
+					</td>
+				</tr>
+			</table>
+			<hr />
+			<br />
+			<br />
+			<hr />
+			<p/>
+							<p/>
+											<p/>
+			<h4>维修项目</h4>
+			<p/>
+							<p/>
+											<p/>
+			<hr />
+			<div id="table1">
+				<table cellpadding="0" cellspacing="0">
+					<tr>
+						<td> 序号 </td>
+						<td>项目编码</td>
+						<td>项目名称</td>
+						<td>单价</td>
+						<td>工时</td>
+						<td>优惠</td>
+						<td>金额</td>
+						<td>开始时间</td>
+						<td>完工时间</td>
+						<td>施工人员</td>
+						<td>项目分类</td>
+						<td>备注</td>
+						<td>删除</td>
+					</tr>
+					<tr>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td>
+							<input type="date">
+						</td>
+						<td>
+							<input type="date">
+						</td>
+						<td>
+							<input type="text" /> </td>
+						<td></td>
+						<td>
+							<input type="text" /> </td>
+					</tr>
+				</table>
+			</div>
+			<hr />
+			<p />
+			<h4>商品明细</h4>
+			<p />
+			<hr/>
+
+			<form>
+				商品编码：
+				<input type="text" /> 商品名称：
+				<input type="text" /> 单位:
+				<input type="text" /> 期初成本：
+				<input type="text" /> 期初库存：
+				<input type="text" /> 品牌
+				<input type="text" />
+				<br />
+				<br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;规格：
+				<input type="text" /> 销售单价：
+				<input type="text" /> 适用车型：
+				<input type="text" /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<input type="button" value="保存新建商品" />
+			</form>
+			<br />
+			<hr/>
+			<br />
+			<br />
+			<hr />
+			<div id="table1">
+				<table cellpadding="0" cellspacing="0">
+					<tr>
+						<td> 序号 </td>
+						<td>商品编码</td>
+						<td>商品名称</td>
+						<td>品牌</td>
+						<td>规格</td>
+						<td>适用车型</td>
+						<td>单位</td>
+						<td>销售价格</td>
+						<td>数量</td>
+						<td>优惠</td>
+						<td>金额</td>
+						<td>领料人员</td>
+						<td>商品备注</td>
+						<td>操作</td>
+					</tr>
+					<tr>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td>
+							<input type="text">
+						</td>
+						<td>
+						</td>
+						<td></td>
+						<td>
+						</td>
+						<td></td>
+						<td></td>
+					</tr>
+				</table>
+			</div>
+
+		</div>
+
+	</body>
+
+</html>

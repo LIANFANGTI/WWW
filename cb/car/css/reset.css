@@ -1,0 +1,30 @@
+/* CSS Document */
+* { margin: 0; padding: 0; }
+body { background: #ffffff; color: #545454; font-size: 12px; }
+body, h1, h2, h3, h4, h5, h6, hr, p, blockquote,dl, dt, dd, ul, ol, li, pre,form, fieldset, legend, button, input, textarea, th, td { margin: 0; padding: 0; }
+body, button, input, select, textarea { font: 12px/1.5 'Microsoft Yahei', arial, \5b8b\4f53, sans-serif; }
+h1, h2, h3, h4, h5, h6 { font-size: 100%; }
+address, cite, dfn, var, optgroup { font-style: normal; }
+code, kbd, pre, samp { font-family: courier new, courier, monospace; } /* 缁熶竴绛夊瀛椾綋 */
+small { font-size: 12px; }
+ul, ol, li { list-style: none; }
+input, button { vertical-align: middle; }
+button { display : inline-block; overflow: visible; width: auto; outline: none; border: none; background: none; text-align: center; cursor: pointer; }
+button::-moz-focus-inner { margin: 0; padding: 0; border: none; }
+
+/** 閲嶇疆琛ㄥ崟鍏冪礌 **/
+legend { color: #000; } /* for ie6 */
+fieldset, img { border: 0; } /* img 鎼溅锛氳閾炬帴閲岀殑 img 鏃犺竟妗� */
+button, input, select, textarea { font-size: 100%; } /* 浣垮緱琛ㄥ崟鍏冪礌鍦� ie 涓嬭兘缁ф壙瀛椾綋澶у皬 */
+/* 娉細optgroup 鏃犳硶鎵舵 */
+
+table { border-collapse: collapse; border-spacing: 0; }
+table, th, td { vertical-align: middle; }
+
+a { color: #3e3e3e; outline: none; }
+a:link, a:visited { text-decoration: none; }
+a:hover, a:active { color: #f56902; text-decoration: underline; }
+
+/*鍐呴儴鍏冪礌鏈夋诞鍔ㄥ妗嗛珮搴︿笉瀹氬唴瀹逛笉琚拺寮€瑙ｅ喅鏂规*/
+.clearfix { zoom: 1; }
+.clearfix:after { content: "\0020"; display: block; height: 0; clear: both; visibility: hidden; }

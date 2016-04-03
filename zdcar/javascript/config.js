@@ -1,0 +1,1 @@
+var DTPath = "http://www.66km.com/";var SKPath = "http://www.66km.com/skin/default/";var EXPath = "http://www.66km.com/extend/";var CKDomain = "";var CKPath = "/";var CKPrex = "DgB_";

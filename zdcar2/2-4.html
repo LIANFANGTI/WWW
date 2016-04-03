@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>采购退货单管理</title>
+		<link rel="stylesheet" href="css/index.css" />
+	</head>
+
+	<body>
+		<div class="main">
+			<div class="box">
+				<div class="box_title">
+					<h4>采购退货单管理</h4></div>
+				<div>
+					<table class="table1-4" cellspacing="0">
+						<tr>
+							<td>单号
+								<input type="text" />
+							</td>
+							<td>供应商
+								<input type="text" />
+							</td>
+							<td colspan="2">开单日期
+								<input type="date" /> 到
+								<input type="date" />
+							</td>
+						</tr>
+						<tr>
+							<td>结算状态
+								<select>
+									<option>
+										请选择
+									</option>
+									<option>
+										未结算
+									</option>
+									<option>
+										已结算
+									</option>
+								</select>
+							</td>
+							<td>
+								结算方式
+								<select>
+									<option>
+										现金
+									</option>
+									<option>
+										支付宝
+									</option>
+									<option>
+										微信
+									</option>
+
+								</select>
+							</td>
+							<td>审核状态
+								<select>
+									<option>未审核</option>
+									<option>已审核</option>
+
+								</select>
+							</td>
+						</tr>
+						<tr>
+							<td>采购退货人：
+								<input type="text" /> </td>
+							<td>采购退货备注
+								<input type="text" />
+							</td>
+							<td>
+								<input type="button" value="查询" class="botton" />
+							</td>
+
+						</tr>
+
+					</table>
+					<hr />
+					<div>
+						<table class="table1" cellspacing="0">
+							<tr>
+								<td>序号</td>
+								<td>单号</td>
+								<td>开单日期</td>
+								<td>供应商名称</td>
+								<td>应付金额</td>
+								<td>采购人</td>
+								<td>审核状态</td>
+								<td>结算方式</td>
+								<td>结算状态</td>
+								<td>备注</td>
+								<td>操作</td>
+							</tr>
+							<tr>
+								<td colspan="11">暂无数据</td>
+							</tr>
+							<tr>
+								<td>合计：</td>
+								<td colspan="11">0.00</td>
+
+							</tr>
+						</table>
+					</div>
+				</div>
+
+			</div>
+
+		</div>
+
+	</body>
+
+</html>

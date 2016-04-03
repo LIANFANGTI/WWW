@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>采购开单</title>
+		<link rel="stylesheet" href="css/index.css" />
+		<script src="js/js.js"></script>
+	</head>
+
+	<body>
+		<div id="main">
+			<div class="box">
+				<div class="box_title">采购开单</div>
+				<div>
+
+					<table class="table1-4">
+						<tr>
+							<td>单号
+								<input type="text" /> </td>
+							<td>开单日期
+								<input type="date" /> </td>
+							<td>供应商名称
+								<input type="text" /> </td>
+						</tr>
+						<tr>
+							<td>发票号
+								<input type="text" /> </td>
+							<td>税率
+								<input type="text" /> </td>
+							<td>备注
+								<input type="text" /> </td>
+							<td>
+								<input type="button" value="保存" class="botton" /> </td>
+						</tr>
+					</table>
+				</div>
+				<hr />
+				<div class="box_title">
+					商品明细
+                            <!--
+                            	作者：1003316758@qq.com
+                            	时间：2016-01-06
+                            	描述：这里如果用h的标签或者p标签都会导致名字独占一行
+                            -->
+						<input type="button" value="新建" class="toolbt" onClick="showdiv()" />
+						<input type="button" value="选择" class="toolbt" onClick="showdiv1()" />
+
+				</div>
+<div class="close">
+						<!--下面这个是一个showdiv事件，在点击按钮的时候显示隐藏的div-->
+
+						<div id="bg"></div>
+						<div id="show">
+							<div class="showdiv">
+								<div class="box_title">
+									<h4 style="float: left;">新建商品</h4>
+									<p style="float: right;" onclick="hidediv()">X</p>
+								</div>
+								<div>
+									<div class="item"> <span class="item_name">商品编码：</span>
+										<input type="text" class="text" />
+									</div>
+									<div class="item"> <span class="item_name">商品名称：</span>
+										<input type="text" class="text" />
+									</div>
+									<div class="item"> <span class="item_name">单位：</span>
+										<input type="text" class="text" />
+									</div>
+									<div class="item"> <span class="item_name">期初库存：</span>
+										<input type="text" class="text" />
+									</div>
+									<div class="item"> <span class="item_name">品牌：</span>
+										<input type="text" class="text" />
+									</div>
+									<div class="item"> <span class="item_name">规格：</span>
+										<input type="text" class="text" />
+									</div>
+									<div class="item"> <span class="item_name">销售单价：</span>
+										<input type="text" class="text" />
+									</div>
+									<div class="item"> <span class="item_name">适用车型：</span>
+										<input type="text" class="text" />
+									</div>
+									<div class="item"> <span class="item_name">备注	：</span>
+										<input type="text" class="text" />
+									</div>
+								</div>
+							</div>
+							<input id="btnclose" type="button" value="保存" class="botton" onclick="hidediv()" />
+						</div>
+					</div>
+					<!--
+分界线分界线            
+                    -->
+					<div class="close">
+						<!--下面这个是一个showdiv事件，在点击按钮的时候显示隐藏的div-->
+
+						<div id="bg1"></div>
+						<div id="show1">
+							<div class="showdiv">
+								<div class="box_title">
+									<h4 style="float: left;">选择商品</h4>
+									<p style="float: right;" onclick="hidediv1()">X</p>
+								</div>
+								<div>
+									<input type="search" value="请输入关键字" class="text" />
+									<input type="button" value="搜索" class="botton" />
+								</div>
+								<br />
+								<br />
+								<div>
+									<table class="table1" cellspacing="0">
+										<tr>
+
+											<td>商品编码</td>
+											<td>商品名称</td>
+											<td>品牌</td>
+											<td>适用车型</td>
+											<td>单位</td>
+											<td>销售价</td>
+											<td>库存</td>
+											<td>操作</td>
+										</tr>
+										<tr>
+											<td colspan="8">没有数据</td>
+											<!--
+                                                                     	作者：1003316758@qq.com
+                                                                     	时间：2016-01-06
+                                                                     	描述：这里读取出来的数据，是要自动形成一个列表，如有必要可翻页
+                                                                     -->
+										</tr>
+									</table>
+
+								</div>
+							</div>
+							<input id="btnclose" type="button" value="保存" class="botton" onclick="hidediv1()" />
+							<input id="btnclose" type="button" value="关闭" class="botton" onclick="hidediv1()" />
+						</div>
+					</div>
+				<div>
+					<table class="table1">
+						<tr>
+							<td>序号</td>
+							<td>商品编码</td>
+							<td>商品名称</td>
+							<td>品牌</td>
+							<td>规格</td>
+							<td>适用车型</td>
+							<td>车牌号</td>
+							<td>单位</td>
+							<td>采购单价</td>
+							<td>采购数量</td>
+							<td>采购金额</td>
+							<td>商品备注</td>
+							<td>操作</td>
+						</tr>
+						<tr>
+							<td colspan="13">请点击选择按钮添加数据</td>
+
+						</tr>
+						<tr>
+							<td>合计：</td>
+							<td colspan="12">0.00</td>
+
+						</tr>
+
+					</table>
+
+				</div>
+
+			</div>
+
+		</div>
+
+	</body>
+
+</html>

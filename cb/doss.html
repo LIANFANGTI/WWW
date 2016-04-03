@@ -1,0 +1,184 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<STYLE>
+BODY {
+         FONT-SIZE: 60pt; 
+         CURSOR: default; 
+         COLOR: rgb(160,160,160);
+         FONT-FAMILY: Fixedsys; 
+         BACKGROUND-COLOR: black;
+         scroll=no;
+         width:100%
+       }
+A {
+        FONT-SIZE: 10pt;
+        CURSOR: default; 
+        COLOR: rgb(160,160,160);
+        FONT-FAMILY: Fixedsys;
+         BACKGROUND-COLOR: black;
+         TEXT-DECORATION: none
+       }
+A:hover {
+        TEXT-DECORATION: underline overline
+       }
+.input {
+        BORDER-TOP-WIDTH: 0px; 
+        BORDER-LEFT-WIDTH: 0px; 
+        FONT-SIZE: 60pt; 
+        
+        BORDER-BOTTOM-COLOR: rgb(0,0,0);
+        CURSOR: text; COLOR: rgb(160,160,160);
+        FONT-FAMILY: Fixedsys; 
+        BACKGROUND-COLOR:black;
+        BORDER-RIGHT-WIDTH: 0px;
+}
+</STYLE>
+<title>DOS</title>
+<SCRIPT language=javascript>
+	var ttime=0,tip='_',zhi
+	function Flash(){
+		ttime++
+		if(ttime%2==1){
+			tip=''
+			var gett=document.shuru.dos.value
+			var len=gett.length;
+			document.shuru.dos.value=gett.substring(0,len-1)+tip
+		}else{
+			tip='_'
+			document.shuru.dos.value=document.shuru.dos.value+tip
+		}
+		if(ttime>100)
+		ttime=0
+		zhi=setTimeout("flash()",200)
+}
+
+
+function strabc(){
+
+   str="2,2,3,5,6,6"; //这是一字符串 
+   var strs= new Array(); //定义一数组 
+   strs=str.split(","); //字符分割 
+   for (i=0;i<strs.length ;i++ ){ 
+       alert(strs[i])
+       } 
+
+}
+
+
+
+
+
+
+function shutdown(){
+window.open('http://www.webjx.com')
+closes.Click()
+}
+
+// ERROR
+function errorcommand(){
+error.style.display="block"
+error.innerHTML=error.innerHTML + "<br>ERROR: not find  “ <b>" + document.shuru.dos.value+"</b>” "
+document.shuru.dos.value="" 
+}
+
+
+function cls(){
+ con=word.innerHTML
+ if(con!=""){
+ word.innerHTML="ok" 
+ }
+
+}
+
+function helpyou(){
+var helpword="<br>dir:显示本网站目录<BR>win:进入窗口界面,网站主页有更多内容<BR>exit:表示退出本页进入本站论坛 <BR>cls:表示清屏关闭目录显示<BR>txt:我的几篇发在杂志上的散文 <BR>dhtml:动态html版更酷代替旧版界面<BR>qq:表示qq好友资料搜索<BR>dll:表示3721网址搜索<BR><br><br> "
+word.style.display=""
+word.innerHTML=word.innerHTML + helpword
+}
+
+function win(){
+alert('正在制做中请期待......')}
+function txt(){
+alert('正在制做中请期待......')}
+function DHTML(){alert('正在制做中请期待......')}
+
+function search(){
+var dosearch=PRompt("请输入你所要查询的QQ号",'')
+var doit="http://search.tencent.com/cgi-bin/friend/user_show_info?ln="+dosearch;
+window.open(doit)
+}
+function nullbr(){
+  var  tword="Cb:\\admin>>> "
+  null1.innerHTML= null1.innerHTML+"<br>"+tword
+ 
+}
+function searc(){
+		var dosearch=prompt("请输入你所要查询的网页或内容",'')
+		var doit="http://202.98.123.184/cns.dll?fw=cm2&name="+dosearch;
+		window.open(doit)
+   }
+function judge(){
+var menu=document.shuru.dos.value;
+alert(menu)
+switch (menu){
+	case "exit":
+		shutdown()
+	break;
+	case "help":
+        helpyou()
+	break;
+	case "cls":
+		cls()
+	break;
+	case "":
+		nullbr();
+	break;
+	default:
+	errorcommand()
+	}
+</SCRIPT>
+<script language="Javascript">
+<!--
+function MM_popupMsg(msg) { //v1.0
+  alert(msg);
+}
+}
+//-->
+</script>
+</head>
+
+<BODY onload=flash()>
+ <BR>
+ <DIV id="" style="WIDTH:100%;POSITION:absolute">
+<b color="#0f0">===============================================</b>
+       <p align="center" color="white" style="background:black;width:100%; margin:5px 0px 5px 500px;text-align:center;">©ComputerBasc DOSYSTEM BY LIANHUANGJI<br>V1.0</p>
+<b color="#0f0"> ===============================================</b>
+    CB.AVICI18.CN(R) personal webpage dos
+    <BR>(C)Copyright©Lianhuangji 
+    <script language="JavaScript1.2" src="1.js" type="text/javascript"></script>
+<BR><BR>
+<DIV id="word" style="DISPLAY:none; width:200%;color:white; background:black;">
+
+</DIV>
+<div id="error" style="color:red; width:95%;display:none;">
+</div>
+<FORM name="shuru" action="javascript:judge()">
+    <div id="null1" style=" width:50%; color:white;"></div> 
+    
+    <div id="user" style="float:left; width:50%; color:white;">Cb:\admin>>></div>
+   <div id="inputd" style="width:50%;background:black;float:right;">
+     <INPUT 
+      class="input" 
+      onblur="flash()"
+      onfocus="this.value=''
+               clearTimeout(zhi)" 
+      size="37"
+      value=""
+      name="dos"
+      title="用鼠标点后键入dir回车">
+      </div>
+   <INPUT style="DISPLAY: none" type="submit" value="submit hidden">
+</FORM></DIV></BODY>
+</html>

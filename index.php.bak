@@ -1,0 +1,16 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>自点科技</title>
+</head>
+
+<body>
+<script>
+	alert(1)
+
+	window.location.href="cb/zdcar/index.php"
+	alert(2)
+</script>
+</body>
+</html>

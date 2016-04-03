@@ -1,0 +1,14 @@
+官网：http://www.net.cn/
+控制台：http://cp.hichina.com/
+
+主机管理控制台用户名： qxw1098640017
+
+
+FTP登录用户名： qxw1098640017FTP
+FTP登录主机地址： qxw1098640017.my3w.com
+、
+
+数据库名称： qds161376404_db
+数据库类型： SqlServer
+数据库连接地址： qds161376404.my3w.com
+数据库用户名： qds161376404

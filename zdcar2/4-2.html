@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>供应商管理</title>
+		<link rel="stylesheet" href="css/index.css" />
+		<script src="js/js.js"></script>
+	</head>
+
+	<body>
+		<div class="main">
+			<div class="box">
+				<div class="box_title">
+					供应商管理
+					<input type="button" value="新增供应商" class="botton" onclick="showdiv()"/>
+				</div>
+				<div style="margin-bottom: 15px;">
+					查询条件 ：
+					<input type="text" />
+					<input type="button" class="botton" value="查询" />
+
+				</div>
+				<div>
+					<table class="table1">
+						<tr>
+							<td>序号</td>
+							<td>名称</td>
+							<td>总计欠款</td>
+							<td>主营业务</td>
+							<td>联系人</td>
+							<td>联系手机</td>
+							<td>联系电话</td>
+							<td>QQ</td>
+							<td>地址</td>
+							<td>操作</td>
+						</tr>
+						<tr>
+							<td colspan="10">暂无数据</td>
+						</tr>
+					</table>
+				</div>
+				<div style="text-align: center;margin: 5px;">
+					<input type="button" value="上一页" class="botton" />
+					<input type="button" value="下一页" class="botton" />
+					<h5>共0页，当前在第0页</h5>
+                              <!--
+                              	作者：1003316758@qq.com
+                              	时间：2016-01-06
+                              	描述：这里的数字0要进行数据库调用
+                              -->
+
+				</div>
+<div class="close">
+						<!--下面这个是一个showdiv事件，在点击按钮的时候显示隐藏的div-->
+
+						<div id="bg"></div>
+						<div id="show">
+							<div class="showdiv">
+								<div class="box_title">
+									<h4 style="float: left;">新增供应商</h4>
+									<p style="float: right;" onclick="hidediv()">X</p>
+								</div>
+								<div>
+									<div class="item"> <span class="item_name">名称：</span>
+										<input type="text" class="text" />
+									</div>
+									<div class="item"> <span class="item_name">联系人：</span>
+										<input type="text" class="text" />
+									</div>
+									<div class="item"> <span class="item_name">联系手机：</span>
+										<input type="text" class="text" />
+									</div>
+									<div class="item"> <span class="item_name">QQ：</span>
+										<input type="text" class="text" />
+									</div>
+									<div class="item"> <span class="item_name">主营业务：</span>
+										<input type="text" class="text" />
+									</div>
+									<div class="item"> <span class="item_name">地址：</span>
+										<input type="text" class="text" />
+									</div>
+									<div class="item"> <span class="item_name">备注：</span>
+										<input type="text" class="text" />
+								
+							</div>
+							<input id="btnclose" type="button" value="保存" class="botton" onclick="hidediv()" />
+						</div>
+					</div>
+					<!--
+分界线分界线            
+                    -->
+					<div class="close">
+						<!--下面这个是一个showdiv事件，在点击按钮的时候显示隐藏的div-->
+
+						<div id="bg1"></div>
+						<div id="show1">
+							<div class="showdiv">
+								<div class="box_title">
+									<h4 style="float: left;">选择商品</h4>
+									<p style="float: right;" onclick="hidediv1()">X</p>
+								</div>
+								
+								
+								</div>
+			</div>
+
+		</div>
+
+	</body>
+
+</html>

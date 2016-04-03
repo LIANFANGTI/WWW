@@ -1,0 +1,289 @@
+<html>
+<head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<STYLE>
+BODY {
+         FONT-SIZE: 60pt; 
+         CURSOR: default; 
+         COLOR: rgb(160,160,160);
+         FONT-FAMILY: Fixedsys; 
+         BACKGROUND-COLOR: black;
+         scroll=no;
+         width:100%
+       }
+A {
+        FONT-SIZE: 10pt;
+        CURSOR: default; 
+        COLOR: rgb(160,160,160);
+        FONT-FAMILY: Fixedsys;
+         BACKGROUND-COLOR: black;
+         TEXT-DECORATION: none
+       }
+A:hover {
+        TEXT-DECORATION: underline overline
+       }
+.input {
+        BORDER-TOP-WIDTH: 0px; 
+        BORDER-LEFT-WIDTH: 0px; 
+        FONT-SIZE: 60pt; 
+        
+        BORDER-BOTTOM-COLOR: rgb(0,0,0);
+        CURSOR: text; COLOR: rgb(160,160,160);
+        FONT-FAMILY: Fixedsys; 
+        BACKGROUND-COLOR:black;
+        BORDER-RIGHT-WIDTH: 0px;
+}
+</STYLE>
+
+<script>
+function getfocus(){
+   document.shuru.dos.focus()
+   if(event.keyCode==13){
+       alert(1)
+       judge();
+       document.shuru.dos.blur();
+   }
+
+document.onkeydown=getfocus;
+}
+</script>
+
+<script language="Javascript">
+<!--
+function MM_popupMsg(msg) { //v1.0
+  alert(msg);
+}
+//-->
+</script>
+<BODY onload="Flash()" onunload="alert('unload事件触发')">
+ <BR>
+ <DIV id="" style="WIDTH:100%;POSITION:absolute">
+<b color="#0f0">===============================================</b>
+       <p align="center" color="white" style="background:black;width:100%; margin:5px 0px 5px 500px;text-align:center;">©ComputerBasc DOSYSTEM BY LIANHUANGJI<br>V1.0</p>
+<b color="#0f0"> ===============================================</b>
+    CB.AVICI18.CN(R) personal webpage dos
+    <BR>(C)Copyright©Lianhuangji 
+    <script language="JavaScript1.2" src="1.js" type="text/javascript"></script>
+<BR><BR>
+<DIV id="word" style="DISPLAY:none; width:200%;color:white; background:black;">
+
+</DIV>
+<div id="error" style="color:red; width:95%;display:none;">
+</div>
+<FORM name="shuru" action="javascript:judge()">
+    <div id="null1" style=" width:50%; color:white;"></div> 
+    
+    <div id="user" style="float:left; width:50%; color:white;">Cb:\admin>>></div>
+   <div id="inputd" style="width:50%;background:black;float:right;">
+     <INPUT 
+      class="input" 
+      onblur="flash()"
+      onfocus="this.value=''
+               clearTimeout(zhi)" 
+      size="37"
+      value=""
+      name="dos"
+      title="用鼠标点后键入dir回车">
+      </div>
+   <INPUT style="DISPLAY: none" type="submit" value="submit hidden">
+   <br><br><br>
+</FORM></DIV>
+<SCRIPT>
+  var ttime=0,tip='_',zhi
+  var mod="dos"
+  function Flash(){
+    
+    
+    ttime++
+    /*if(ttime%2==1){
+       tip=''
+       var gett=document.shuru.dos.value
+       var len=gett.length;
+       document.shuru.dos.value=gett.substring(0,len-1)+tip
+     }else{
+       tip='_'
+       document.shuru.dos.value=document.shuru.dos.value+tip}
+       if(ttime>100){ ttime=0}
+       zhi=setTimeout("flash()",200)
+     } */
+ }
+
+
+function strabc(a){
+   str="2,2,3,5,6,6"; 
+   var strs= new Array(); 
+   strs=str.split(","); 
+   for(i=0;i < strs.length;i++){ 
+       alert(strs[i]) ;
+     }    
+  }
+
+
+function close(){
+    window.close()
+    }
+
+// ERROR
+
+function errorcommand(){
+   word.style.display="block"
+   echo= " <br><p color='red'>ERROR: not find  “ <b>" + document.shuru.dos.value+"</b >”</p>"
+   
+  fuzhi(echo)
+   document.shuru.dos.value="" 
+  }
+  
+//cls
+
+function cls(){
+      con=word.innerHTML
+      if(con!=""){
+        word.innerHTML="<b color='green'>clear  succeed！</b>" 
+        document.shuru.dos.value=""  
+       }
+  }
+
+function helpyou(){
+   var helpword="<BR>home:进入窗口界面<BR>exit:退出<BR>cls:清屏<BR><BR>dll:网页内容查询<br><br> "
+   word.style.display=""
+   word.innerHTML=word.innerHTML + helpword
+   document.shuru.dos.value=""  
+ }
+
+ 
+  
+function chat(a){
+    var echo
+    switch(a){
+     case "hello":
+      echo="ECHO：he 你妈逼！说中文！<br><br>"
+      break;
+     }
+   
+  // word.innerHTML= word.innerHTML+ echo
+  // word.style.display=""
+  fuzhi(echo)
+     document.shuru.dos.value=""  
+ }
+
+function search(){
+  var dosearch=PRompt("请输入你所要查询的QQ号",'')
+  var doit="http://search.tencent.com/cgi-bin/friend/user_show_info?ln="+dosearch;
+  window.open(doit)
+  }
+  
+function nullbr(){
+  var  tword="Cb:\\admin>>> "
+  word.style.display="block"
+  word.innerHTML= word.innerHTML+"<br>" +tword;
+  //alert(word.innerHTML);
+  }
+  
+function home(){
+  window.open("http:\\cb.avici18.cn")
+}
+ 
+function searc(){
+   var dosearch=prompt("请输入你所要查询的网页或内容",'')
+   var doit="http://m.baidu.com/s?word= "+dosearch;
+   window.open(doit)
+  }
+ 
+ 
+ 
+function judge(){
+    var menu=document.shuru.dos.value;
+    if(menu=='exit')
+       shutdown()
+    else if(menu=='help')
+       helpyou()
+    else if(menu=='cls')
+       cls()
+    else if(menu=='home')
+       home()
+    else if(menu=='txt')
+       txt()
+    else if(menu=='dhtml')
+       dhtml()
+    else if(menu=='dll')
+       searc()
+    else if(menu=='qq')
+       search()
+    else if(menu=='')
+       nullbr()
+    else if(menu=='test')
+       alert("2")
+    else if(menu=='hello')
+       //alert("hello") 
+       chat(menu)
+    else if(menu=='url')
+       eurl()
+    else if(menu=='reload')
+      window.location.reload();
+    else if(menu=='infor')
+     informaintion()
+    else
+       errorcommand()
+   }
+
+
+function  eurl(){
+   word.style.display="block"
+   word.innerHTML=word.innerHTML+"URL:"+document.domain
+}
+
+function informaintion(){
+  echo="<p>浏览器：" + navigator.appName + "</p><p>浏览器版本：" + navigator.appVersion + "</p><p>代码：" + navigator.appCodeName + "</p><p>平台："+ navigator.platform + "</p><p>Cookies 启用：" + "</p><p>Cookies 启用：" + navigator.cookieEnabled + "</p><p>浏览器的用户代理报头："+navigator.userAgent + "</p><p>屏幕分辨率:" + screen.width + " * " + screen.height + "</p>"
+  fuzhi(echo)
+//word.innerHTML=word.innerHTML+echo
+
+}
+var cleng=0
+var fu
+var b=""
+function fuzhi(a){
+
+fu=a
+echotime()
+}
+function echotime(){
+
+cleng++
+
+b=b+fu.substr(cleng,1);
+word.style.display="block"
+word.innerHTML=b+ cleng+"//"+fu.length
+t=setTimeout('echotime()',1)
+if(cleng>=fu.length){
+    clearTimeout(t)
+    cleng=0
+}
+}
+
+  </script> 
+</BODY>
+
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

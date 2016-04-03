@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>自点车坊_新闻页面</title>
+    <meta name="viewport" content="width=device-width" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+
+<link href="css/reset.css" rel="stylesheet" />
+<link href="css/pubilc.css" rel="stylesheet" />
+<link href="css/css.css" rel="stylesheet" />
+<script src="js/jquery-1.11.1.min.js"></script>
+<script src="js/jquery.SuperSlide.2.1.1.js"></script>
+<!--[if IE]>
+<script src="/HiiShe_Style/res/js/html5.js"></script>
+<![endif]-->
+<!--[if lte IE 6]>
+<script src="/HiiShe_Style/res/js/ie6_png.js" type="text/javascript"></script>
+<script type="text/javascript">
+    DD_belatedPNG.fix('*');
+</script>
+<![endif]-->
+
+
+
+<script type="text/javascript">
+
+    //$(document).ready(function () {
+    //    //菜单不同的颜色
+    //    debugger;
+    //    var obj = $(".nav-ul > li > a");
+    //    obj.click(function () {
+    //        // 取集合 先全部去掉点击class 
+    //        obj.removeClass("on")
+    //        // 只对当前点击添加class 
+    //        $(this).addClass("on");
+    //    });
+    //});
+//收藏平台
+function AddFavorite(sURL, sTitle) {
+		try {
+				window.external.addFavorite(sURL, sTitle);
+		}
+		catch (e) {
+				try {
+						window.sidebar.addPanel(sTitle, sURL, "");
+				}
+				catch (e) {
+						alert("对不起，您的浏览器不支持此收藏操作!请使用Ctrl+D收藏本平台。");
+				}
+		}
+}
+</script>
+    
+    <style>
+        html, body {
+            margin:0;padding:0
+        }
+
+    </style>
+</head>
+<body class="wrap-950">
+    <div id="header" style="background-color:red">
+
+
+
+<section class="containter clearfix">
+    <header class="top-wrap">
+        <div class="top"><span class="mr">
+            <i>
+               <a href='/Home/Index'>首页</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href='/UserAccount/Index'>【登录】</a> | <a href='/UserAccount/Register'>【注册】</a>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <a href="javascript:AddFavorite('http://www.zidianchefang.com', '自点车坊')">加入收藏</a>
+                |<a href="/Home/Contactus?Length=0">联系我们</a>
+            </i>
+            </span>
+        </div>
+    </header>
+    <nav class="nav-wrap">
+        <div class="nav">
+            <div class="logo"><a href="index.html"><img src="" /></a></div>
+            <ul class="nav-ul">
+                <li><a class="" href="index.html">首  页</a></li>
+                <li><span></span></li>
+                <li><a class="" href="1.html">公司介绍</a></li>
+                <li><span></span></li>
+                <li><a class="on" href="2.html">新闻媒体</a></li>
+                <li><span></span></li>
+                <li><a class="" href="/Home/Knowledge?Length=0">百科科普</a></li>
+                <li><span></span></li>
+                <li><a class="" href="/Home/Product?Length=0">产品展示</a></li>
+                <li><span></span></li>
+                <li><a class="" href="/Home/Activity?Length=0">车友会 </a></li>
+                <li><span></span></li>
+                
+                <li><a class="" href="/Home/ComeIn?Length=0">投资加盟</a></li>
+                <li><span></span></li>
+                <li><a class="" href="/Home/Contactus?Length=0">联系我们</a></li>
+            </ul>
+        </div>
+    </nav>
+</section>
+    </div>
+    <div id="content" class="bodyer">
+        
+        
+
+<div class="n-banner"></div>
+<section class="box">
+    <div class="n-title">
+        <h2>行业新闻</h2>
+        <span>Industry news</span>
+    </div>
+    <div class="news-box clearfix">
+        <div class="img"><img src="images/2_2.jpg" /></div>
+        <div class="news-list">
+            <ul>
+                    <li class="clearfix"><span><a href="/Home/News_Detail?code=354566A6CCA0E7C1" target="_blank">搭2.0L发动机 比亚迪商常规动力版曝光</a></span><em><time>2015/3/7 0:00:00</time></em></li>
+                    <li class="clearfix"><span><a href="/Home/News_Detail?code=EDF0CB74DA0AABB4" target="_blank">凯迪拉克先用 安吉星/移动推车载4G服务</a></span><em><time>2015/3/7 0:00:00</time></em></li>
+            </ul>
+            <div class="page">
+                <ol><li>共2条信息</li><li><strong>1</strong>/1</li><li><span><a href="/Home/News?ramdom=26 " >首页</a></span></li><li>上一页</li><li>下一页</li><li><span><a href="/Home/News?ramdom=26&PageNo=1 " >尾页</a></span></li><li><span class="text">到第</span><input class="input J_Input" style="width:40px;" id="txt_pagego" type="number" value="2" min="1" max="100" /><span class="text">页</span><span class="btn J_Submit" tabindex="0" onclick="javascript:var objvalue = document.getElementById('txt_pagego').value; location.href='/Home/News?ramdom=26&PageNo='+objvalue" ">确定</span></li></ol>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="box">
+    <div class="n-title">
+        <h2>公司新闻</h2>
+        <span>Company news</span>
+    </div>
+    <div class="news-box clearfix">
+        <div class="img"><img src="images/2_2.jpg" /></div>
+        <div class="news-list">
+            <ul>
+            </ul>
+            <div class="page">
+                <ol>
+                    
+                </ol>
+            </div>
+        </div>
+    </div>
+</section>
+
+        
+    </div>
+    <div id="footer">
+<footer>
+    <div class="footer"><img src="images/1_3.png" style="height:150px; width:150px;" /></div>
+    <div class="bottom">
+        <p class="copyright">版权所有·Copyright © 杭州XXXXXXX有限公司 All Rights Reserve. 浙ICP备14027359号-1</p>
+    </div>
+</footer>
+    </div>
+    
+</body>
+</html>
+
