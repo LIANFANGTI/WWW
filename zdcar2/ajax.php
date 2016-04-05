@@ -13,7 +13,7 @@ require_once 'page.class.php';
 require_once '../function/fun.php';
 $db = new mysql('121.196.226.94', 'admin', 'xwq198291', "zckj_db");
 $atype=$_POST["atype"];
-echo "当前的请求模式为：".$atype;
+//echo "当前的请求模式为：".$atype;
 switch($atype){
 	/*添加客户*/
 	case "addkh": 
@@ -88,10 +88,11 @@ switch($atype){
 			}
 
 	break;
-	/*json数组返回测试*/
+	/*收银页面数据返回*/
 	case "test1":
 		$val=$_POST["val"];
-		$db->select("kehu","*","name like '%$val%' or phone like '%$val%' ");$kehu = $db->fetchArray(MYSQL_ASSOC);
+		$cp=$_POST["cp"];
+		$db->select("kehu","*","company=$cp and (name like '%$val%' or phone like '%$val%' )");$kehu = $db->fetchArray(MYSQL_ASSOC);
 		echo "(((";
 		foreach($kehu as $row){
 			echo"<tr><td>".$row["vip"]."</td>".
@@ -102,9 +103,9 @@ switch($atype){
 				"<td>".$row["intime"]."</td>".
 				"<td>".($row["vipdj"]*1)."</td>".
 				"<td><a class='btn btn-primary btn-xs' data-toggle='modal' href='#addxf'>添加消费</a></td>
-				 <td><a class='btn btn-primary btn-xs' data-toggle='modal' href='#addcz'>充值记录</a></td>
-				 <td><a class='btn btn-primary btn-xs' data-toggle='modal' href='#xfjl'>消费记录</a></td>
-				 <td><a class='btn btn-primary btn-xs' data-toggle='modal' href='#carinfo'>车辆信息</a></td>";
+				 <td><a class='btn btn-primary btn-xs' data-toggle='modal' onClick='czjl(".$row["id"].")' href='#addcz'>充值记录</a></td>
+				 <td><a class='btn btn-primary btn-xs' data-toggle='modal' onClick='xfjl(".$row["id"].")' href='#xfjl'>消费记录</a></td>
+				 <td><a class='btn btn-primary btn-xs' data-toggle='modal' onClick='car(".$row["id"].")' href='#carinfo'>车辆信息</a></td>";
 		}
 		if(empty($kehu))echo"<tr><td colspan=11>呀！无匹配数据哎~</td></tr>";
 		echo ")))";
@@ -610,8 +611,8 @@ switch($atype){
 	break;	
 	case "czjl":
 		$kh=$_POST["kh"];
-		$cp=$_POST["cp"];
-		$db->select("czjl","*","company=".$cp." and kh=".$kh); $czjl = $db->fetchArray(MYSQL_ASSOC);
+		//$cp=$_POST["cp"];
+		$db->select("czjl","*","kh=".$kh); $czjl = $db->fetchArray(MYSQL_ASSOC);
 		echo $db->printMessage();
 		if(!empty($czjl)){
 			foreach($czjl as $row){
@@ -627,6 +628,26 @@ switch($atype){
 			echo"<tr><td colspan='5' >暂无记录</td></tr>";	
 		}
 	    echo"<tr><td colspan='5' ><input type='button' value='充值' class='botton' onClick=\"$('#cz1').toggle(200)\"/></td></tr>";
+		echo "<input type='hidden' value='".$kh."' id='khid'>";
+	break;
+	case "czjl2":
+		$kh=$_POST["kh"];
+		//$cp=$_POST["cp"];
+		$db->select("czjl","*","kh=".$kh); $czjl = $db->fetchArray(MYSQL_ASSOC);
+		echo $db->printMessage();
+		if(!empty($czjl)){
+			foreach($czjl as $row){
+				echo "<tr>
+						<td>".$row["date"]."</td>
+						<td>".$row["je"]."</td>	
+						<td>".jsfst($row["zf"])."</td>	
+						<td>".$row["bm"]."</td>	
+						<td>杭州</td>		
+					 </tr>";	
+			}	
+		}else{
+			echo"<tr><td colspan='5' >暂无记录</td></tr>";	
+		}
 		echo "<input type='hidden' value='".$kh."' id='khid'>";
 	break;
 	case "car":
@@ -652,6 +673,29 @@ switch($atype){
 	    echo"<tr><td colspan='6' ><input type='button' value='添加' class='botton' onClick=\"$('#addcar').toggle(200)\"/></td></tr>";
 		echo "<input type='hidden' value='".$kh."' id='khid'>";
 	break;
+	case "car2":
+		$kh=$_POST["kh"];
+		$cp=$_POST["cp"];
+		$db->select("car","*","kh=".$kh); $car = $db->fetchArray(MYSQL_ASSOC);
+		echo $db->printMessage();
+		if(!empty($car)){
+			$c=0;
+			foreach($car as $row){
+				echo "<tr>
+						<td>".++$c."</td>
+						<td>".$row["pp"]."</td>
+						<td>".$row["car"]."</td>	
+						<td>".$row["carid"]."</td>	
+						<td>".$row["buydate"]."</td>	
+						<td>".$row["tips"]."</td>		
+					 </tr>";	
+			}	
+		}else{
+			echo"<tr><td colspan='6' >暂无记录</td></tr>";	
+		}
+		echo "<input type='hidden' value='".$kh."' id='khid'>";
+	break;
+	//添加充值
 	case "hycz":
 		$kh=$_POST["kh"];
 		$cp=$_POST["cp"];
@@ -683,7 +727,9 @@ switch($atype){
 		$car=$_POST["car"];
 		$carid=$_POST["carid"];
 		isset($_POST["vin"])?$vin=$_POST["vin"]:$vin="";
+		
 		isset($_POST["tips"])?$tips=$_POST["tips"]:$tips="";
+		echo "\n 备注".$tips;
 		$bdate=$_POST["bdate"];
 		$carinfo=array("pp"=>$pp,"kh"=>$kh,"car"=>$car,"km"=>$km,"tips"=>$tips,"carid"=>$carid,"vin"=>$vin,'buydate'=>$bdate);
 		$db->insert("car",$carinfo);

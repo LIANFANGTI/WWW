@@ -1,7 +1,7 @@
 // JavaScript Document
 var itemok=0
-var winh=document.body.clientHeight;
-var winw=document.body.clientHeight;
+var winh=1
+var winw=1
 //***************************************************【关闭窗口】*********************************************************
 function closeb(obj){
 	var obj1=document.getElementById(obj)
