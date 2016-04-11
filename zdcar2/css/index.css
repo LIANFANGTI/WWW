@@ -270,11 +270,12 @@ li a {
 	color: #595959;
 	vertical-align: middle;
 	height: 100%;
-	width: 100%;
+
 	background:rgba(255,255,255,0);
 	border: 0px solid #ccc;
 	border-top-color: #a6a6a6;
 	text-align:center;
+	overflow: hidden;width:auto;
 }
 .input_td_2 {
 	font-size: 12px;
@@ -339,7 +340,7 @@ li a {
 	white-space: nowrap;
 	padding: 5px 10px 5px 10px;
 	border-bottom: 1px solid #cacaca;
-	background: #eee6f7;
+	background: #E6F0F9;
 	margin-bottom: 12px;
 }
 
@@ -398,7 +399,8 @@ li a {
 .caption {/*弹窗标题文字caption*/
 	width: auto;
 	float: left;
-	margin: 5px 0px;
+	margin: 5px 10px;
+	font-size:14px;
 }
 /***************************************放置表单元素前面的文字的item_name样式控制********************************/
 .back {

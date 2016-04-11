@@ -79,16 +79,51 @@ function tjcz(){
 	 var czje=document.getElementById("money").value
 	 var zffs=document.getElementById("czfs").value
 	 var tips=document.getElementById("tips").value
-	 alert(tips)
-	 	/*$.post("ajax.php",{kh:kh,cp:cp,je:czje,zf:zffs,atype:"hycz"},function(data,aaa){
+	 //alert(tips)
+	 	$.post("ajax.php",{kh:kh,cp:cp,je:czje,zf:zffs,atype:"hycz"},function(data,aaa){
 		  if(data.indexOf("成功")!=-1){
 			  czjl(kh)
 			   $("#addcz1").toggle(10)
 		  }else{
 			  alert(data)
 		  }
-	})*/
+	})
 	
 }
+function skehu(){
+	var name=document.getElementById("kname").value
+	var phone=document.getElementById("kphone").value
+	var carid=document.getElementById("carid").value
+	if(name!=""&&phone.length==11){
 
+		$.post("ajax.php",{khname:name,cp:cp,khadd:"",khpho:phone,khcar:"",khcarid:carid,khps:"无",atype:"addkh"},function(data,aaa){
+			if(data.indexOf("成功")!=-1){
+				alert("保存成功")
+				khcx(name)
+				//document.getElementById("sou").value=name
+			}
+		})
+	}else{
+		alert("信息填写不正确\n1.请检查用户姓名是否填写\n2.手机号码格式是否正确");
+	}
+}
+function pageload(){
+	var Request = new Object();
+	Request = GetRequest();
+	var khname=decodeURI(Request["kh"]);
+	khcx(khname)
+}
+function GetRequest() {
+  
+  var url = location.search; //获取url中"?"符后的字串
+   var theRequest = new Object();
+   if (url.indexOf("?") != -1) {
+      var str = url.substr(1);
+      strs = str.split("&");
+      for(var i = 0; i < strs.length; i ++) {
+         theRequest[strs[i].split("=")[0]]=(strs[i].split("=")[1]);
+      }
+   }
+   return theRequest;
+}
 

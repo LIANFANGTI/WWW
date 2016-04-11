@@ -2,8 +2,8 @@
 function cxbill(a){
 var bid=document.getElementById("bid").value
 var bkh=document.getElementById("bkh").value
-var sdate=document.getElementById("sdate").value
-var edate=document.getElementById("edate").value
+var sdate=""
+var edate=""
 var cxbill=document.getElementById("cxbill")
 var cp=document.getElementById("cp").value
 var myDate = new Date();

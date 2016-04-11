@@ -19,12 +19,14 @@ require_once 'function.php';
 					<a href="#"></a>
 				</li>
 				<li>
-					<a href="#"></a>
+					<a href="shouyin.php"></a>
 				</li>
-
+				<li>
+					<a href="#">收银</a>
+				<li>
 				<li><a href="#">开单</a>
 					<ul>
-						<li><a href="1-1.php" target="window">开单</a></li>
+						<li><a href="1-1a.php" target="window">开单</a></li>
 						<!--
                         	作者：1003316758@qq.com
                         	时间：2015-12-29
@@ -40,7 +42,7 @@ require_once 'function.php';
                         -->
 					</ul>
 				</li>
-				<li><a href="#">采购</a>
+				<!--<li><a href="#">采购</a>
 					<ul>
 						<li><a href="2-1.html" target="window">采购开单</a></li>
 						<li><a href="2-2.html" target="window">采购单管理</a></li>
@@ -50,8 +52,8 @@ require_once 'function.php';
                         	作者：1003316758@qq.com
                         	时间：2015-12-29
                         	描述：在页面的下方直接有一个汇总的功能，并且可以选择时间的范围
-                        -->
-					</ul>
+                       
+					</ul> -->
 				</li>
 				<li><a href="#">仓库</a>
 					<ul>
@@ -91,8 +93,11 @@ require_once 'function.php';
 					</ul>
 
 				</li>
+				<li><a href="vidio/">技术共享</a>
+					<ul>
+					</ul>
 
-				
+				</li>
 				<li>
 					<a href="#"></a>
 				</li>
@@ -124,7 +129,7 @@ require_once 'function.php';
 			</ul>
 		</div>
 		<div id="main">
-		<iframe id="window" name="window" src="1-1.php">
+		<iframe id="window" name="window" src="shouyin.php">
 			<!--框架内容-->
 		</iframe>
 

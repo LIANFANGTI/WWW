@@ -18,9 +18,9 @@
 		</style>
 	</head>
 
-	<body>
+	<body onload="pageload()">
 	<input type="hidden" value="<?php echo $cp; ?>" id="cp">
-	<a class="btn btn-primary btn-xs" data-toggle="modal" href="#addxf2">添加消费</a>
+	
 		<div class="container-fluid">
 			<div class="input-group">
 				<input type="search" placeholder="请输入手机号或姓名" onkeyup="khcx(this.value)" class="form-control" />

@@ -102,7 +102,7 @@ switch($atype){
 				"<td>".($row["jf"]*1)."</td>".
 				"<td>".$row["intime"]."</td>".
 				"<td>".($row["vipdj"]*1)."</td>".
-				"<td><a class='btn btn-primary btn-xs' data-toggle='modal' href='#addxf'>添加消费</a></td>
+				"<td><a class='btn btn-primary btn-xs' data-toggle='modal' href='http://www.zduber.com/zdcar2/1-1a.php?khid=".$row["id"]."'>添加消费</a></td>
 				 <td><a class='btn btn-primary btn-xs' data-toggle='modal' onClick='czjl(".$row["id"].")' href='#addcz'>充值记录</a></td>
 				 <td><a class='btn btn-primary btn-xs' data-toggle='modal' onClick='xfjl(".$row["id"].")' href='#xfjl'>消费记录</a></td>
 				 <td><a class='btn btn-primary btn-xs' data-toggle='modal' onClick='car(".$row["id"].")' href='#carinfo'>车辆信息</a></td>";
@@ -120,53 +120,83 @@ switch($atype){
 		$ierror=$_POST["ierror"];		
 		$cp=$_POST["cp"];
 		$db->select("item","count(*) as ct","company =".$cp."");$item = $db->fetchArray(MYSQL_ASSOC);$ict=$item[0]["ct"];
+		echo "\n查询结果:".$db->printMessage;
 		$iid="XM".fz($cp).date('Ymd').fz($ict);
 		echo "\nBM:".$iid."\n";
-		$itemInfo = array('itemid'=>$iid,'itemname' =>$iname, 'money' =>$imoney ,'error' =>$ierror,'item_type' =>$itype,'tips' =>'无','company'=>$cp,'date'=>date('Ymd'));
+		$itemInfo = array('itemid'=>$iid,'itemname' =>$iname, 'money' =>$imoney ,'error' =>$ierror,'item_type' =>$itype,'tips' =>'无','company'=>$cp,'adate'=>date('Ymd'));
 		$db->insert("item", $itemInfo);
 		echo "名字：".$iname;
 		echo $db->printMessage();		
 	break;
 	/*添加商品*/
 	case"addshop":
-		$sname=$_POST["sname"];
-		$sdw=$_POST["sdw"];
-		$scb=$_POST["scb"];
-		$skc=$_POST["skc"];
-		$spp=$_POST["spp"];
-		$scar=$_POST["scar"];
-		$sdj=$_POST["sdj"];		
-		$cp=$_POST["cp"];
+	//skc:ssl,sdj:sdj,scb:scb,xinghao:xinghao,etime:etime,akc:akc,
+		$sname=$_POST["sname"];	//商品名称
+		$sdw=$_POST["sdw"];		//商品单位
+		$scb=$_POST["scb"];		//商品成本
+		$skc=$_POST["skc"];		//添加数量
+		$spp=$_POST["spp"];		//商品品牌
+		$scar=$_POST["scar"];	//适用车型
+		$sdj=$_POST["sdj"];		//商品单价
+		$cp=$_POST["cp"];		//所属公司
+		$xinghao=$_POST["xinghao"];//零件型号
+		$etime=$_POST["etime"];	//保质期
+		$akc=$_POST["akc"];		//安全库存
 		$db->select("shop","count(*) as ct","company =".$cp."");$shop = $db->fetchArray(MYSQL_ASSOC);$sct=$shop[0]["ct"];
 		$bm="SP".fz($cp).date('Ymd').fz($sct);		
-		$shopInfo = array('sname'=>$sname, 'spp' =>$spp, 'sdw' =>$sdw ,'scar' =>$scar,'sdj' =>$sdj,'scb' =>$scb,'skc' =>$skc,'company'=>$cp,'date'=>date('Ymd'),'sbm'=>$bm);
+		$shopInfo = array('sname'=>$sname, 'spp' =>$spp,'sgg'=>$xinghao,'etime'=>$etime,'akc'=>$akc,'sdw' =>$sdw ,'scar' =>$scar,'sdj' =>$sdj,'scb' =>$scb,'skc' =>$skc,'company'=>$cp,'date'=>date('Ymd'),'sbm'=>$bm);
 		$db->insert("shop", $shopInfo);
 		echo "名字：";
 		echo $db->printMessage();		
 	break;
+	/*更新订单总额*/
+	case "update-bill-zje":
+		$bid=$_POST["bid"];
+		$zje=$_POST["zje"];
+		$bill=array("zje"=>$zje);
+		$db->update("bill",$bill,"id=$bid");
+		echo "UPDATA bill SET zje= $zje WHERE id=$bid";
+		echo $db->printMessage();
+	break;
+	/*订单结算*/
+	case "bill-js":
+		$bid=$_POST["bid"];
+		$kh=$_POST["kh"];
+		$je=selecta("bill","id",$bid,"zje");
+		$ye=selecta("kehu","id",$kh,"money");
+		if($ye>=$je){
+			$kehu=array('money'=>($ye-$je));$db->update("kehu",$kehu,"id=$kh");
+			$bill=array('zt'=>1);$db->update("bill",$bill,"id=$bid");
+		}else{
+			echo"余额不足";
+			echo "金额：$je\n余额:$ye";
+		}
+		
+		
+	break;
    /*存入订单已添加项目*/
    case"aitem":
-   		$khid=$_POST["khid"];
-		$iid=$_POST["iid"];
-		$bid=$_POST["bid"];
-		$gs=$_POST["gs"];
-		$yh=$_POST["yh"];
+   		//$khid=$_POST["khid"]; //
+		$iid=$_POST["iid"];//项目id
+		$bid=$_POST["bid"];//订单id
+		$gs=$_POST["gs"];//工时=价格
+		$yh=$_POST["yh"];//
 		$gr=$_POST["gr"];
-		$tips=$_POST["tips"];	
-		$geti=$_POST["i"];
-		$getcs=$_POST["cs"];
-		if($geti>=$getcs)echo "添加结束跳转";	
+		$tips=$_POST["tips"];//备注	
+		//$geti=$_POST["i"];
+		//$getcs=$_POST["cs"];
+		//if($geti>=$getcs)echo "添加结束跳转";	
+		/*
 		$je=dbinfo("item",$iid,"money")*$gs; //获取项目单价乘以工时
 		$money=dbinfo("kehu",$khid,"money");//获取用户当前余额
-		echo "\n扣除金额：".$je."\n";					
+		echo "\n扣除金额：".$je."\n";		*/			
 		$userInfo = array('iid'=>$iid, 'bid' =>$bid, 'gs' =>$gs ,'yh' =>$yh,'gr' =>$gr,'tips' =>'无',);
 		$db->insert("aitem", $userInfo);
-        echo $db->printMessage();	
+        echo $db->printMessage();	/*
 		$money-=$je;$cmoney=array('money'=>$money);
 		$db->update("kehu", $cmoney, "id = ".$khid."");
-			
 		echo $db->printMessage()."\n客户id为".$khid ."\n扣除金额：".$je."\n扣除前金额".$money;	
-		$money=array('money'=>1);
+		$money=array('money'=>1);*/
 	break;
 	/*存入订单已添加商品*/
 	case"ashop":
@@ -189,7 +219,7 @@ switch($atype){
 	    echo $db->printMessage()."\n客户id为".$khid ."\n扣除金额：".$je."\n扣除前金额".$money;	
 		##kehu表余额更新
 		$money-=$je;$cmoney=array('money'=>$money);
-		$db->update("kehu", $cmoney, "id = ".$khid."");
+		/*$db->update("kehu", $cmoney, "id = ".$khid."");*/
 		##shop表库存更新
 		$db->select("shop","*","sid=".$sid);$shop = $db->fetchArray(MYSQL_ASSOC);
 		$skc=$shop[0]["skc"];
@@ -207,9 +237,10 @@ switch($atype){
 		$bkh=$_POST["bkh"];
 		$ber=$_POST["ber"];
 		$bps=$_POST["bps"];
-		$zje=$_POST["zje"];		
+		$zje=$_POST["zje"];
+		$carid=$_POST["carid"];		
 		$company=$_POST["company"];
-		$userInfo = array('zje'=>$zje,'bid'=>$bid, 'kehu' =>$bkh, 'btype' =>$ber ,'tips' =>$bps,'date'=>date('Y-m-d'),'company'=>$company);
+		$userInfo = array('zje'=>$zje,'bid'=>$bid, 'kehu' =>$bkh, 'btype' =>$ber ,'carid'=>$carid,'tips' =>$bps,'date'=>date('Y-m-d'),'company'=>$company);
 		$db->insert("bill", $userInfo);
 		echo $db->printMessage();
  
@@ -229,6 +260,7 @@ switch($atype){
 		//更新刚刚插入记录的订单编码字段
 		$billInfo = array('bid'=>$bm);
         $db->update("bill", $billInfo, "id =".$reid[0]["id"]);
+		echo "[bm]".$bm."[/bm]";
 		/**编码生成完成**/
 		
 		//echo $db->printMessage();		
@@ -240,92 +272,88 @@ switch($atype){
 		$table=$_POST["table"];
         $db->delete($table, "id = ".$id."");
 		$db->select("aitem", "*", "bid=".$bid."");$aitem = $db->fetchArray(MYSQL_ASSOC);//已添加项目表读取
-		$db->select("ashop", "*", "bid=".$bid."");$ashop = $db->fetchArray(MYSQL_ASSOC);//已添加项目表读取
+		$db->select("ashop", "*", "bid=$bid and del and sl");$ashop = $db->fetchArray(MYSQL_ASSOC);//已添加项目表读取
 		if($table=="aitem"){
-			$tabt="<td> 序号 </td><td>项目编码</td>
-                                <td>项目名称</td>
-                                <td>单价</td>
-                                <td>工时（时）</td>
-                                <td>优惠（%）</td>
-                                <td>金额</td>
-                                <td>开始时间</td>
-                                <td>完工时间</td>
-                                <td>施工人员</td>
-                                <td>项目分类</td>
-                                <td>备注</td>
-                                <td >操作</td>";
-								
-			$abt="<tr><td colspan='13'><input type='button' value='新建项目' class='botton' onClick=\"add('citem')\"></td></tr>";
-			if(empty($aitem)){
-				
-				echo $tabt."<tr><td colspan='14'>暂无项目请添加</td></tr>".$abt;
-		  	}else{
-				$c=0;
-				echo $tabt ;
-				foreach($aitem as $row){
-					$c++;
-					$db->select("item", "*", "id=".$row["iid"]."");$iitem = $db->fetchArray(MYSQL_ASSOC);
-					$money=$iitem[0]["money"]*$row["gs"]*(1-$row["yh"]/100);
-					$bm="XM".fz($iitem[0]["company"]).fz($row["id"]);
-					echo"<tr id='aiid".$c."' class='".$row["id"]."'>";
-					echo"
-					<td>".$c."</td>
-					<td>".$bm."</td>
-					<td>".$iitem[0]["itemname"]."</td>
-					<td><input type='text'  disabled id='imoney".$c."' class='input_td' value='".$iitem[0]["money"]."'></td>
-					<td><input type='text'  onChange='crm(".$c.",\"aitem\")' id='gs".$c."' class='input_td' value='".$row["gs"]."'></td>
-					<td><input type='text'  onChange='crm(".$c.",\"aitem\")' id='iyh".$c."'  class='input_td' value='".($row["yh"]*1)."'></td>
-					<td id='irmb".$c."'>".$money."</td>
-					<td><input type='date' class='input_td' value='".$row["stime"]."'/></td>
-					<td><input type='date' class='input_td' value='".$row["etime"]."'/></td>
-					<td>".$row["gr"]."</td>
-					<td>项目分类</td>
-					<td>".$row["tips"]."</td>
-					<td><button class='toolbt' onclick='del(".$row["id"].",\"aitem\")'>删除</button></td>";
-					echo"</tr>";	
-			   }
-			   echo $abt;	
-			}
-	 }else{
-		   $tabt=" <tr><td> 序号 </td><td>商品编码</td><td>商品名称</td><td>品牌</td><td>规格</td><td>适用车型</td>
-                      <td>单位</td> <td>销售价格</td><td>数量</td><td>优惠</td><td>金额</td><td>领料人员</td><td>商品备注</td>
-                      <td>操作</td></tr>";
-		  $abt="<tr><td colspan='14'><input type='button' value='商品添加' class='botton' onClick=\"add('csp')\"></td></tr>";	
+		}else{
+			
 			if(empty($ashop)){
-				echo $tabt;
 				echo"<tr><td colspan='14'>暂无商品请添加</td></tr>";
-			 	echo $abt;
 			}else{
-				$c=0;
-				echo $tabt;
+				$c=$srmb=0;
+				echo "[ashop]";
 				foreach($ashop as $row){
 					$c++;
 					$db->select("shop", "*", "sid=".$row["sid"]."");$sshop= $db->fetchArray(MYSQL_ASSOC);
-					$money=$sshop[0]["sdj"]*$row["sl"]*(1-$row["yh"]/100);
+					$smoney=($sshop[0]["sdj"]*$row["sl"]);
+					$srmb+=$smoney;
 					$bm="SP".fz($sshop[0]["company"]).fz($row["id"]);
+					echo" <input type='hidden' id='sid+".$c."' value='".$row["sid"]."'>";
 					echo"<tr id='asid".$c."' class='".$row["id"]."'>";
-					echo"<td>".$c."</td>
-					<td>".$bm."</td>
-					<td>".$sshop[0]["sname"]."</td>
-					<td>".$sshop[0]["spp"]."</td>
-					<td>".$sshop[0]["tips"]."</td>
-					<td>".$sshop[0]["scar"]."</td>
-					<td>".$sshop[0]["sdw"]."</td>
-					<td><input type='text' disabled id='smoney".$c."' style='width:15px;' class='input_td' value='".$sshop[0]["sdj"]."' />元</td>
-					<td><input type='text' onChange='crm(".$c.",\"ashop\")' id='sl".$c."' style='width:30px;cursor:pointer;' class='input_td' value='".$row["sl"]."' /></td>
-					<td><input type='text' onChange='crm(".$c.",\"ashop\")' id='syh".$c."' style='width:15px;' class='input_td' value='".($row["yh"]*1)."' /></td>
-					<td id='srmb".$c."'>".$money."</td>
-					<td>".$row["gr"]."</td>
-					<td>".$row["tips"]."</td>
-					<td><button class='toolbt'
-					onclick='tuihuo(".$row["id"].",\"".$sshop[0]["sname"]."\",".$c.")'
-					>退货</button></td>";
-					echo"</tr>";
-					
-			    }
-				echo $abt;	
+					echo"
+						<td>".$c."</td>
+						<td>".$bm."</td>
+						<td id='sp".$c."'>".$sshop[0]["sname"]."</td>
+						<td>".$sshop[0]["spp"]."</td>
+						<td>".$sshop[0]["tips"]."</td>
+						<td>".$sshop[0]["scar"]."</td>
+						<td>".$sshop[0]["sdw"]."</td>
+						<td><input type='text' disabled id='smoney".$c."' style='width:25px;' class='input_td' value='".$sshop[0]["sdj"]."' />元</td>
+						<td><input type='text' onChange='crm(".$c.",\"ashop\")' id='sl".$c."' style='width:30px;cursor:pointer;' class='input_td' value='".$row["sl"]."' /></td>
+						<td id='srmb".$row["id"]."'>$smoney 元</td>
+						<td>".$row["gr"]."</td>
+						<td>".$row["tips"]."</td>
+						<td><button class='btn btn-danger btn-xs'
+							onclick='tuihuo(".$row["id"].",\"".$sshop[0]["sname"]."\",".$c.",".$sshop[0]["sid"].")'
+						>退货</button></td>
+						";
+					echo"</tr>";	
+				}
+			echo "[/ashop]";				
 			}
 		}/**/
+	break;
+	
+//删除已添加项目
+	case"delxm":
+		$aiid=$_POST["aiid"];
+		$bid=$_POST["bid"];
+		$db->delete("aitem", "id=".$aiid."");
+		$db->select("aitem", "*", "bid=$bid");$aitem= $db->fetchArray(MYSQL_ASSOC);
+		$money=0;
+		$c=0;
+		echo "[aitem]";
+			foreach($aitem as $row){
+				$c++;
+				$db->select("item", "*", "id=".$row["iid"]."");$iitem = $db->fetchArray(MYSQL_ASSOC);
+				$money+=$row["gs"];
+				$bm=$iitem[0]["itemid"];
+				echo"<tr id='aiid".$c."' class='".$row["id"]."'>";
+				echo"
+					<td>".$c."</td>
+					<td>".$bm."</td>
+					<td>".$iitem[0]["itemname"]."</td>
+					<td><input type='text' id='gs".$row["id"]."' class='input_td' onChange='cgxm(".$row["id"].");jisuan()' value='".$row["gs"]."' name='gs'></td>
+					<td><input type='date' id='st".$row["id"]."' class='input_td' onChange='cgxm(".$row["id"].")' value='".$row["stime"]."'/></td>
+					<td><input type='date' id='et".$row["id"]."' class='input_td' onChange='cgxm(".$row["id"].")' value='".$row["etime"]."'/></td>
+					<td>".$row["gr"]."</td>
+					<td>项目分类</td>
+					<td><input type='text' id='ps".$row["id"]."' class='input_td' onChange='cgxm(".$row["id"].")' value='".$row["tips"]."' /></td>
+					<td><button class='btn btn-danger btn-xs' onclick='delxm(".$row["id"].",$bid)'>删除</button></td>";
+				echo"</tr>";	
+			}
+		echo "[/aitem]";
+	break;
+	case "cgxm":
+		$id=$_POST["id"];
+		$gs=$_POST["gs"];
+		$st=$_POST["st"];
+		$et=$_POST["et"];
+		$ps=$_POST["ps"];
+		$aitemInfo = array('gs'=>$gs,'stime'=>$st,'etime'=>$et,'tips'=>$ps);
+        $db->update("aitem", $aitemInfo, "id =$id");
+		//echo $db->printMessage;
+		//echo $db->printMessage;
+
 	break;
 /*更新订单信息*/
    case"upbill":
@@ -362,7 +390,6 @@ switch($atype){
 		//从客户表中获取名字或电话中包含搜索条件$bkh 的记录
 		$db->select("kehu", "*", "company =".$cp." and (name like '%".$bkh."%' or phone like '%".$bkh."%')");
 		$tjkh = $db->fetchArray(MYSQL_ASSOC);
-		
 		//客户条件初始化
 		$khtj="";
 		//遍历获取答符合上方条件的记录中的id 并加入的 客户条件变量$khtj中
@@ -388,7 +415,7 @@ switch($atype){
 		$ywlx="<select><option>美容</option><option>维修</option><option>保养</option>
 				<option>改装</option></select>";
 		echo "<tr><td>序号</td><td>单号</td><td>开单日期</td><td>客户名称</td><td>联系手机</td><td>车牌号</td>
-				<td>车型</td><td>接待人</td><td>应收金额</td><td>已收金额</td><td>尚欠金额</td><td>结算日期</td>
+				<td>接待人</td><td>应收金额</td><td>结算日期</td>
 				<td>结算方式</td><td>业务状态</td><td>结算状态</td><td>业务类型</td><td>备注</td></tr>";
 		if(empty($cxbill)){echo "<tr><td colspan='17'>啊哦~找不到匹配的订单信息!<b style='color:red;'>( ´･ ̮ ･` )</b></td></tr>";}else{
 		foreach($cxbill as $row){
@@ -401,11 +428,10 @@ switch($atype){
 			<td>".$kehu[0]["name"]."</td>
 			<td>".$kehu[0]["phone"]."</td>
 			<td>".$kehu[0]["carid"]."</td>
-			<td>".$kehu[0]["car_type"]."</td>
+			
 			<td>员工一</td>
 			<td><b style='color:#b67f00;'>".($row["zje"]*1)."￥</b></td>
-			<td>".($row["yshou"]*1)."￥</td>
-			<td>".($row["zje"]*1-$row["yshou"]*1)."￥</td>
+	
 			<td>未结</td>
 			<td>".$jsfs."</td>
 			<td>".$ywzt."</td>
@@ -607,8 +633,70 @@ switch($atype){
 		$db->update("ashop", $bInfo, "id = ".$asid);
 		echo "\n数据更新状态：".$db->printMessage()."\n";
 		echo "商品id：".$sid."\n客户：id".$khid."\n退货数量：".$thsl."\n退货原因：".$thyy."\n删除状态：".$del."\n";
+		$db->select("shop","*","sid=$sid"); $shops = $db->fetchArray(MYSQL_ASSOC);
+		$shop=array("skc"=>($shops[0][skc]+$thsl));
+		$db->update("shop",$shop,"sid=$sid");
 		//sid:sid,khid:khid,thsl:thsl,thyy:thyy,del:del
 	break;	
+	/*商品重新加载*/
+	case "reloadsp":
+		$bid=$_POST["bid"];
+		$db->select("ashop", "*", "bid=$bid and del and sl");$ashop = $db->fetchArray(MYSQL_ASSOC);//已添加项目表读取
+		if(empty($ashop)){
+			echo"<tr><td colspan='14'>暂无商品请添加</td></tr>";
+		}else{
+			$c=$srmb=0;
+			echo "[ashop]";
+			foreach($ashop as $row){
+				$c++;
+				$db->select("shop", "*", "sid=".$row["sid"]."");$sshop= $db->fetchArray(MYSQL_ASSOC);
+				$smoney=($sshop[0]["sdj"]*$row["sl"]);
+				$srmb+=$smoney;
+				$bm="SP".fz($sshop[0]["company"]).fz($row["id"]);
+				echo" <input type='hidden' id='sid+".$c."' value='".$row["sid"]."'>";
+				echo"<tr id='asid".$c."' class='".$row["id"]."'>";
+				echo"
+					<td>".$c."</td>
+					<td>".$bm."</td>
+					<td id='sp".$c."'>".$sshop[0]["sname"]."</td>
+					<td>".$sshop[0]["spp"]."</td>
+					<td>".$sshop[0]["tips"]."</td>
+					<td>".$sshop[0]["scar"]."</td>
+					<td>".$sshop[0]["sdw"]."</td>
+					<td><input type='text' disabled id='smoney".$c."' style='width:25px;' class='input_td' value='".$sshop[0]["sdj"]."' />元</td>
+					<td><input type='text' onChange='crm(".$c.",\"ashop\")' id='sl".$c."' style='width:30px;cursor:pointer;' class='input_td' value='".$row["sl"]."' /></td>
+					<td id='srmb".$row["id"]."'>$smoney 元</td>
+					<td>".$row["gr"]."</td>
+					<td>".$row["tips"]."</td>
+					<td><a data-toggle='modal' href='#spth' class='btn btn-danger btn-xs' onclick='tuihuo(".$row["id"].",\"".$sshop[0]["sname"]."\",".$row["sl"].",".$sshop[0]["sid"].")' >退货</a></td>";
+				echo"</tr>";	
+			}
+			echo "[/ashop]";
+		}
+	break;
+	case "reloaditem":
+		$cp=$_POST["cp"];
+		$db->select("item", "*", "company=$cp");$item = $db->fetchArray(MYSQL_ASSOC);//已添加项目表读取
+		if(empty($item)){
+			echo"<tr><td colspan='14'>尚未添加维修项目</td></tr>";
+		}else{
+			
+		//echo "[ashop]";
+			$i=0;
+			foreach($item as $row){
+				echo "<tr class=a".++$i.">";
+				echo"<td>".($i+1)."</td>";
+				echo"<td>".$row["itemid"]."</td>";
+				echo"<td>".$row["itemname"]."</td>";
+				echo"<td>".$row["money"]."</td>";
+				echo"<td>".$row["item_type"]."</td>";
+				echo"<td>".$row["tips"]."</td>";
+				echo"<td><button data-dismiss='modal' class='btn btn-success btn-xs' onclick='citem(\"aitemtb\",".($i+1).",".$row["id"].")'>选择</button></td>";
+				echo"</tr>";
+			}
+			//echo "[/ashop]";
+		}
+	break;
 	case "czjl":
 		$kh=$_POST["kh"];
 		//$cp=$_POST["cp"];
@@ -815,7 +903,7 @@ function sdbinfo($tab,$id,$col){
 		$db->select($tab,$col,"sid=".$id);$dbinfo=$db->fetchArray(MYSQL_ASSOC);
 		return	$dbinfo[0][$col];
 }
-
+function selecta($tab,$col,$val,$bal){global $db;$db->select($tab, "*", $col."=".$val);$array = $db->fetchArray(MYSQL_ASSOC);return $array[0][$bal];}
 ?>
 </body>
 </html>

@@ -18,7 +18,7 @@ function akehu(){
 				//alert("公司:"+cp+name+tel+cart+color+nkm+nbkm+nbtime+nback+nbx+bxcp+"，备注："+tips)
 					closeb("akehu")
 		}else{
-			alert("请填写正确信息")	
+			//alert("请填写正确信息")	
 		}	
 }
 
@@ -34,7 +34,7 @@ function xfjla(id){
 	
 	var xfjl1=document.getElementById("xfjltb")
 	$.post("ajax.php",{kh:id,atype:"xfjl"},function(data,aaa){
-		//alert(data)
+		//alert(data1)
 		xfjl1.innerHTML=data
 	})	
 }
@@ -43,5 +43,7 @@ function tjcx(info){
 	var cp=document.getElementById("cp").value
 	var info=document.getElementById("tj").value
 	var khinfo=document.getElementById("khinfo")
-	$.post("ajax.php",{info:info,cp:cp,atype:"khinfo"},function(data,aaa){alert(data)})
+	$.post("ajax.php",{info:info,cp:cp,atype:"khinfo"},function(data,aaa){
+		//alert(data)
+	})
 }

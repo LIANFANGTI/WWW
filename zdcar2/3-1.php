@@ -10,67 +10,23 @@
 		<script src="js/js.js"></script>
         <script src="js/jquery-1.10.2.js"></script>
         <script src="js/3-1.js"></script>
+			<!-- bt框架-->
+			<script src="js/bootstrap.min.js"></script>
+			<link href="css/bootstrap.min.css" rel="stylesheet" />
+			<link href="//netdna.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+		<!-- bt框架End-->
 	</head>
 
 	<body>
 		<div class="main">
 			<div class="box">
 				<div class="box_title"><h4 class="caption">商品管理</h4>
-				<input type="button" value="新建商品" class="botton" onclick="showdiv()"/>
+					<a class="btn btn-success btn-sm" data-toggle="modal" href="#addsp">新建商品</a>
 				</div>
-				<div class="close">
-						<!--下面这个是一个showdiv事件，在点击按钮的时候显示隐藏的div-->
-
-						<div id="bg"></div>
-						<div id="show">
-							<div class="showdiv">
-								<div class="box_title">
-									<h4 style="float: left;">新建商品</h4>
-									<p style="float: right;" onclick="hidediv()">X</p>
-								</div>
-								<div>
-									<div class="item"> <span class="item_name">商品编码：</span>
-										<input type="text" class="text" />
-									</div>
-									<div class="item"> <span class="item_name">商品名称：</span>
-										<input type="text" class="text" />
-									</div>
-									<div class="item"> <span class="item_name">单位：</span>
-										<input type="text" class="text" />
-									</div>
-									<div class="item"> <span class="item_name">期初库存：</span>
-										<input type="text" class="text" />
-									</div>
-									<div class="item"> <span class="item_name">品牌：</span>
-										<input type="text" class="text" />
-									</div>
-									<div class="item"> <span class="item_name">规格：</span>
-										<input type="text" class="text" />
-									</div>
-									<div class="item"> <span class="item_name">销售单价：</span>
-										<input type="text" class="text" />
-									</div>
-									<div class="item"> <span class="item_name">适用车型：</span>
-										<input type="text" class="text" />
-									</div>
-									<div class="item"> <span class="item_name">备注	：</span>
-										<input type="text" class="text" />
-									</div>
-								</div>
-							</div>
-							<input id="btnclose" type="button" value="保存" class="botton" onclick="hidediv()" />
-						</div>
-					</div>
-					<!--
-分界线分界线            
-                    -->
                 	<table class="table1">
-                    	<tr><td>
-                        	 <input type="search"  class="input_td" onKeyUp="tjcx()" id="tj" placeholder="输入商品关键字或编码或采购商家进行查询"/>
-                        </td></tr>
-                    </table>					
-				<div>
-					<table class="table1">
+                    	<tr><td><input type="search"  class="input_td" onKeyUp="tjcx()" id="tj" placeholder="输入商品关键字或编码或采购商家进行查询"/></td></tr>
+                    </table>
+					<table class="table table-striped table-bordered table-hover">
 						<tr>
 							<td>序号</td>
 							<td>商品编码</td>
@@ -85,7 +41,7 @@
 							<td>销售价</td>
 							<td>上次采购价</td>
 							<td>供应商名称</td>
-							<td bgcolor="">操作</td>
+							<td>操作</td>
 						</tr>
 						
 					<?php 
@@ -101,7 +57,7 @@
                          foreach($shops as $row){
                             $zje+=$row["sdj"]*$row["skc"];
 							$zcb+=$row["scb"]*$row["skc"];
-							$row["akc"]==10?$akc="<a  href='#' onclick='akc(".$row["sid"].")'>未设置</a>":$akc=($row["akc"]*1).$row["sdw"];
+							$row["akc"]==10?$akc="<a  href='#' class='btn btn-danger btn-xs' onclick='akc(".$row["sid"].")'>未设置</a>":$akc=($row["akc"]*1).$row["sdw"];
 							if($row["skc"]<$row["akc"]){$bgcolor="#FF1515";$color="red";$bz++;}else{ $bgcolor="#eff6f7";$color="#000";};
                             echo "<tr id='sid".$i."'  color:".$color."'  class='".$row["sid"]."'>";
                             echo "<td>".($i+1)."</td>
@@ -117,7 +73,7 @@
 							<td>".$row["sdj"]."￥</td>
 							<td>".$row["lastcb"]."￥</td>
 							<td>".$row["gys"]."</td>
-							<td><button class='toolbt' onclick='delsp(".$row["sid"].")'>删除</button></td>";
+							<td><button class='btn btn-danger btn-xs' onclick='delsp(".$row["sid"].")'>删除</button></td>";
                             echo"</tr>";
                             $i++;
                           }
@@ -128,11 +84,105 @@
 						?>                      
 						</tr>
 					</table>
-				</div>
+				
 
 			</div>
 		</div>
 
+	<div class="modal fade" data-target="modal"  id="addsp" tabindex="-1" style="z-index:9999;">
+		<div class="modal-dialog modal-lg">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button class="close" data-dismiss="modal">
+						<span class="fa fa-times fa-lg"></span>
+						<span class="sr-only"></span>
+					</button>
+					<h4 class="modal-title">新建商品</h4>
+				</div>
+				<div class="modal-body">
+					<div class="container-fluid">
+						<div class="row">
+							<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+								<div class="input-group">
+									<span class="input-group-addon">名称</span>
+									<input type="text" class="form-control" id="sname"/>
+								</div>
+							</div>
+							
+							<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+								<div class="input-group">
+									<span class="input-group-addon" >数量</span>
+									<input type="text" class="form-control" id="ssl" />
+								</div>
+							</div>
+						</div>
+						<br>
+						<div class="row">
+							<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+								<div class="input-group">
+									<span class="input-group-addon">成本</span>
+									<input type="text" class="form-control" id="scb" />
+								</div>
+							</div>
+							<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+								<div class="input-group">
+									<span class="input-group-addon">售价</span>
+									<input type="text" class="form-control" id="sdj"/>
+								</div>
+							</div>
+						</div>
+						<br>
+						<div class="row">
+							<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+								<div class="input-group">
+									<span class="input-group-addon">品牌</span>
+									<input type="text" class="form-control" id="spp"/>
+								</div>
+							</div>
+							<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+								<div class="input-group">
+									<span class="input-group-addon">型号</span>
+									<input type="text" class="form-control" id="xinghao" />
+								</div>
+							</div>
+						</div>
+						<br>
+						<div class="row">
+							<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+								<div class="input-group">
+									<span class="input-group-addon">到期时间</span>
+									<input type="date" class="form-control" id="etime" />
+								</div>
+							</div>
+							<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+								<div class="input-group">
+									<span class="input-group-addon">预警数量</span>
+									<input type="text" class="form-control" id="akc" />
+								</div>
+							</div>
+						</div>
+						<br>
+						<div class="row">
+							<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+								<div class="input-group">
+									<span class="input-group-addon">适用车型</span>
+									<input type="text" class="form-control" id="car"/>
+								</div>
+							</div>
+						</div>
+						<br>
+					</div>
+					<div class="container-fluid">
+						<div class="row">
+							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
+								<button class="btn btn-primary" onclick="sshop()">保存</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 	</body>
 
 </html>

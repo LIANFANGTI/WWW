@@ -11,52 +11,69 @@
         <script src="js/js.js"></script>
         <script src="js/jquery-1.10.2.js"></script>
         <script src="js/1-2.js"></script>
+		<!-- bt框架-->
+			<script src="js/bootstrap.min.js"></script>
+			<link href="css/bootstrap.min.css" rel="stylesheet" />
+			<link href="//netdna.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+		<!-- bt框架End-->
 	</head>
                                               
 	<body>
 		<div id="main">
-            <div class="box">
+		  <div class="box">
             	<div class="box_title" onClick="$('#cxtj').toggle(200);$('#cx').toggle(300);$('#cx').toggle(100);"><h4 class="caption">查询条件</h4></div>
-                <div class="box_content" id="cxtj"  style="display:none;">  <!--cxtj==>查询条件-->
-                    <div class="items">
-                    	<div class="item"><span class="item_name" >单号：</span> <input type="text" id="bid" onKeyUp="cxbill(this)" class="text" placeholder="输入18位单号"/></div>
-                        <div class="item"><span class="item_name">客户信息：</span> <input type="text" id="bkh"  onKeyUp="cxbill()" class="text" placeholder="客户姓名或手机号"/></div>
-                    </div>
-                    <div class="items">
-                       	<div class="item">
-                           	<span class="item_name">时间范围：</span>
-                            <div class="item"><input id="sdate" type="date" class="text"  onChange="cxbill()"/></div>
-                            <span class="item_name">-</span>
-                            <div class="item"><input type="date" id="edate"  class="text"  onChange="cxbill()"/></div>
-                        </div>
-                    </div>
-                    <div class="items">
-                    	<div class="item">
-                            <span class="item_name">业务状态：</span>
-                            <select class="text" id="bzt">
-                               	<option>请选择</option>
-                                <option>施工中</option>
-                                <option>完工</option>
-                            </select>
-                         </div>
-                     	<div class="item">
-                        	<span class="item_name">结算状态：</span>
-                            <select class="text" id="bjs">
-                              	<option>请选择</option>
-                                <option>未结算</option>
-                                <option>已结算</option>
-                            </select>
-                        </div>
-                     </div>
-                     <div class="items">
-                  	 	<div class="item"><span class="item_name">接待人：</span><input type="text" class="text"/></div>
-                        <div class="item"><span class="item_name">业务类型：</span><input type="text" class="text"/></div>
-                        <div class="item"><span class="item_name">结算方式：</span><input type="text" class="text"/></div>
-                	</div>
-                     <div class="boxbt" id="cx" style=" display:none;"><input type="button" value="查询"  class="botton"/></div>
-            </div>
-           
+                <div class="box_content" id="cxtj"  style="display:none;">
+					<div class="form-horizontal">
+					<div class="form-group">
+				<label class="col-sm-1 control-label">单号</label>
+				<div class="col-sm-3">
+					<input type="text" class="form-control" id="bid" onKeyUp="cxbill(this)"  placeholder="请输入单号" />
+				</div>
+				<label class="col-sm-1 control-label">姓名</label>
+				<div class="col-sm-3">
+					<input type="text" class="form-control" id="bkh"  onKeyUp="cxbill()" placeholder="请输入客户姓名" />
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-1 control-label">结算状态</label>
+				<div class="col-sm-3">
+					<select class="form-control">
+						<option>未选择</option>
+						<option>已结算</option>
+						<option>未结算</option>
+					</select>
+				</div>
+				<label class="col-sm-1 control-label">结算方式</label>
+				<div class="col-sm-3">
+					<select class="form-control">
+						<option>未选择</option>
+						<option>支付宝</option>
+						<option>微信</option>
+						<option>现金</option>
+						<option>其它</option>
+					</select>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-1 control-label">业务类型</label>
+				<div class="col-sm-3">
+					<select class="form-control">
+						<option>未选择</option>
+						<option>洗车</option>
+						<option>美容</option>
+						<option>保养</option>
+						<option>改装</option>
+						<option>其它</option>
+					</select>
+				</div>
+				<label class="col-sm-1 control-label">接待人员</label>
+				<div class="col-sm-3">
+					<input type="text" class="form-control" />
+				</div>
+			</div>
 		</div>
+		
+   
 			<hr />
             <div class="table1">
 			<table  cellpadding="0" cellspacing="0" id="cxbill">
@@ -67,11 +84,11 @@
 					<td>客户名称</td>
 					<td>联系手机</td>
 					<td>车牌号</td>
-					<td>车型</td>
+					<!--<td>车型</td>-->
 					<td>接待人</td>
 					<td>应收金额</td>
-					<td>已收金额</td>
-					<td>尚欠金额</td>
+					<!--<td>已收金额</td>
+					<td>尚欠金额</td>-->
 					<td>结算日期</td>
 					<td>结算方式</td>
 					<td>业务状态</td>
@@ -107,12 +124,11 @@
 								<td>".$kehu[0]["name"]."</td>
 								<td>".$kehu[0]["phone"]."</td>
 								<td>".$kehu[0]["carid"]."</td>
-								<td>".$kehu[0]["car_type"]."</td>
+								
 								<td>员工一</td>
 								<td><b style='color:#b67f00;'>".($row["zje"]*1)."￥</b></td>
-								<td>".($row["yshou"]*1)."￥</td>
-								<td>".($row["zje"]*1-$row["yshou"]*1)."￥</td>
-								<td>未结</td>
+
+								<td>".$row["jsdate"]."</td>
 								<td>".$jsfs."</td>
 								<td>".$ywzt."</td>
 								<td>".jszt($row["zt"])."</td>

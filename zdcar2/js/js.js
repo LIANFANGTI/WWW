@@ -73,6 +73,7 @@ function citem(tab,rowindex,itemid){
 	var money=$('#'+tab+' tr:eq('+rowindex+') td:nth-child(4)').html();//获取当前选择行的第四列（单价）
 	var itype=$('#'+tab+' tr:eq('+rowindex+') td:nth-child(5)').html();//获取当前选择行的第五列（类型）
 	var ips=$('#'+tab+' tr:eq('+rowindex+') td:nth-child(6)').html();//获取当前选择行的第六列（备注）
+	itemid-=1
 	//alert(iname+"\n"+rowindex)	
 		b=$('#itemtb tr:eq(1) td:nth-child(1)').html();
 		if(b=="暂无项目请添加"){$('#itemtb tr:eq('+(1)+')').remove();}
@@ -82,19 +83,19 @@ function citem(tab,rowindex,itemid){
 							"<option>人员2</option>"+
 							"<option>人员3</option>"+
 					"</select>"
-		var content="<td>"+(a-1)+"</td>"+
+		var content="<td>"+(a)+"</td>"+
 				 "<td>"+iid+"</td>"+
-				 "<td id='iid"+(a-1)+"' class="+itemid+">"+iname+"</td>"+
-				 "<td ><input type='text' value='"+money+"' id='imoney"+(a-1)+"' class='input_td' disabled style='width:50px;'></td>"+
-				 "<td><input type='text' class='input_td' title='工时'onChange='changermb("+(a-1)+",\"item\")' id='gs"+(a-1)+"' style='width:20px'/>h</td>"+
-				 "<td><input type='text'class='input_td'title='优惠' onChange='changermb("+(a-1)+",\"item\")' id='iyh"+(a-1)+"' style='width:40px'/>%</td>"+
-				  "<td id='irmb"+(a-1)+"'>0元</td>"+
+				 "<td id='iid"+(a)+"' name='itemid' class="+itemid+">"+iname+"</td>"+
+				/* "<td ><input type='text' value='"+money+"' id='imoney"+(a-1)+"' class='input_td' disabled style='width:50px;'></td>"+*/
+				 "<td><input type='text' name='itemgs' class='input_td' title='工时' onChange='zje()' id='gs"+(a-1)+"' style='width:20px'/></td>"+
+				 /*"<td><input type='text'class='input_td'title='优惠' onChange='changermb("+(a-1)+",\"item\")' id='iyh"+(a-1)+"' style='width:40px'/>%</td>"+
+				  "<td id='irmb"+(a-1)+"'>0元</td>"+*/
 				 "<td><input type='date'class='input_td' style='width:110px'/></td>"+
 				 "<td><input type='date'class='input_td'/></td>"+
 				 "<td>"+select1+"</td>"+
 				 "<td>"+itype+"</td>"+
-				 "<td><input type='text'class='text2'/></td>"+
-				 "<td><button class='toolbt' onclick=\"delrow('itemtb',"+(a-1)+")\" >删除</button></td>"
+				 "<td><input type='text' class='input_td' id='tips' style='width:100px;'/></td>"+
+				 "<td><button class='btn btn-danger btn-xs' onclick=\"delrow('itemtb',"+(a-1)+")\" >删除</button></td>"
 				 
 		$('<tr>'+content+'</tr>').insertAfter($('#itemtb tr:eq('+(a-2)+')')); //再倒数第一行前加入一行
 		closeb("citem")
@@ -320,7 +321,27 @@ function s_item(){
    });
 	/*************************在项目选择列表中插入一行*************************/
 		}		
-		closeb("additem")
+		//closeb("additem")
+}
+function sitem(){
+	 iid=$("#itemid").val(); //项目编码
+	 iname=$("#itemname").val();//项目名称
+	 itype=$("#itemtype").val();//项目类型
+	 imoney=$("#money").val();//项目单价
+	 ierror=$("#error").val();//项目故障
+	 cp=$("#cp").val();//公司id获取	
+	  $.post("ajax.php",{iid:iid,iname:iname,itype:itype,imoney:imoney,ierror:ierror,cp:cp,atype:"additem"},function(data,aaa){
+		  //alert(data)
+          reloaditem()
+		  // $.post("ajax.php",{iid:iid,iname:iname,itype:itype,imoney:imoney,ierror:ierror,cp:cp,atype:"additem"};
+		  // $.post("ajax.php",{cp:cp,atype:"reloaditem"};
+		})
+}
+
+function reloaditem(){
+		 $.post("ajax.php",{cp:cp,atype:"reloaditem"},function(data,aaa){
+			  itemstb.innerHTML=data
+		  });
 }
 //***************************************************【保存新建用户函数】*******************************************************
 var khname,khpho,khadd,khcar,khcarid
@@ -399,7 +420,7 @@ function tjcx(){
 function save_bill(){
  var bkh=document.getElementById("khid").value
  var bty=document.getElementById("b_type").value
- var bps=document.getElementById("bps").value
+	var bps=""
  var ci,cs
  var a=$('#itemtb tr:eq(1) td:nth-child(1)').html();
  var b=$('#shoptb tr:eq(1) td:nth-child(1)').html();
@@ -414,8 +435,9 @@ function save_bill(){
  
  
  /***********************************************数据提交*************************************************************/
-//订单保存
- if(bkh!="请选择客户"&&bty!="选择订单类型"&&k(bps)&&(ci>0||cs>0)){
+
+ //订单保存
+	if(bkh!="请选择客户"&&bty!="选择订单类型"&&k(bps)&&(ci>0||cs>0)){
 	 cp=$("#cp").val()
 	 khid=document.getElementById("khid").value
 	 zje=document.getElementById("billzj").value
@@ -442,7 +464,7 @@ function save_bill(){
 
     }); 
 
- }else if(cs<=0||ci<=0){
+	}else if(cs<=0||ci<=0){
  	alert("请添加订单内容")
  }else{
 	alert("请填写正确信息")	 

@@ -26,7 +26,7 @@
 
 	<head>
 		<meta charset="utf-8" />
-		<title>一库汽车管理系统1</title>
+		<title>一库汽车管理系统</title>
 		<link rel="stylesheet" href="css/index.css" type="text/css" />
         <script src="js/js.js"></script>
          <script src="js/khinfo.js"></script>

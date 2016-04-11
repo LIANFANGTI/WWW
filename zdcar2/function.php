@@ -70,7 +70,7 @@ function btype($a){
 				<option value='4'  selected='selected'>改装</option>
 			"; break;		
 	}
-	return "<select  type='text' id='b_type' name='btype' class='input_td'>".$b."</select>";
+	return "<select  type='text' id='b_type' name='btype' class='input_td ' style='overflow: hidden;width:auto;'>".$b."</select>";
 }
 /*结算状态*/
 function jszt($a){
@@ -86,7 +86,7 @@ function ywzt($a){
 		case "1":$b="<option value='1' selected='selected'>已完成</option><option value='0' >进行中</option>";break;
 		case "0":$b="<option value='1' >已完成</option><option selected='selected' value='0' >进行中</option>";break;	
 	}
-	return "<select class='text' id='ywzt'>".$b."</select>";
+	return "<select class='input_td' id='ywzt'>".$b."</select>";
 }
 /*结算方式*/
 function jsfs($a){
@@ -141,9 +141,30 @@ function sp($id,$col){
 	$db->select("shop", "*", "sid=".$id );$shop = $db->fetchArray(MYSQL_ASSOC);
 	return	$shop[0][$col];
 }
+/*订单信息*/
 function bl($id,$col){
 	global $db;
 	$db->select("bill", "*", "id=".$id );$bill = $db->fetchArray(MYSQL_ASSOC);
 	return	$bill[0][$col];
+}
+//通用查询 使用说明 select（表名，字段，值，要返回字段）返回单行值  多条结果取首条
+function select($tab,$col,$val,$bal){global $db;$db->select($tab, "*", $col."=".$val);$array = $db->fetchArray(MYSQL_ASSOC);return $array[0][$bal];}
+//通用查询 使用说明：select2（表名，字段，值）返回数组
+function select2($tab,$col,$val){
+	global $db;
+	$db->select($tab, "*", $col."=".$val);$array = $db->fetchArray(MYSQL_ASSOC);	
+	return $array;
+}
+function car($id,$kh){
+	global $db;
+	$db->select("car","*","kh=$kh");$array = $db->fetchArray(MYSQL_ASSOC);
+	$option="";
+	foreach($array as $row){
+		$option.="<option value='".$row["id"]."'>".$row["carid"]."</option>";
+		if($row["id"]==$id)$option.="<option value='".$row["id"]."' selected='selected' >".$row["carid"]."</option>";
+	}
+	if(empty($array))$option="<option value='0' selected='selected' >暂无车辆信息</option>";
+	return "<select  id='carinfo' class='input_td'>".$option."</select>";
+	
 }
  ?>
