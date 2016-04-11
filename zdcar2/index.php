@@ -22,7 +22,7 @@ require_once 'function.php';
 					<a href="shouyin.php"></a>
 				</li>
 				<li>
-					<a href="#">收银</a>
+					<a href="shouyin.php">收银</a>
 				<li>
 				<li><a href="#">开单</a>
 					<ul>
@@ -93,7 +93,7 @@ require_once 'function.php';
 					</ul>
 
 				</li>
-				<li><a href="vidio/">技术共享</a>
+				<li><a href="vidio/" target="window">技术共享</a>
 					<ul>
 					</ul>
 

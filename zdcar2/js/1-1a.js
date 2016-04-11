@@ -26,7 +26,7 @@ function sb(){
 			 }
 				alert("订单生成成功")
 			  // location.href="index.php"
-			  //+ javascript:window.print()
+			   javascript:window.print()
 		})
 	}else{
 		alert("请完善订单信息")
